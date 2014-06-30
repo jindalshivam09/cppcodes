@@ -1,0 +1,125 @@
+#include <cstdio>
+#include <memory.h>
+#include <cmath>
+#include <iostream>
+#include <algorithm>
+#include <string>
+
+using namespace std;
+
+const int inf = 1e8;
+
+int i, j, n, m, v, cnt;
+char a[1033];
+int t[1033][26];
+int pch[1033], pv[1033];
+int terminal[1033];
+int reach[1033], link[1033];
+int mem[1033][26];
+int f[1003][1003];
+char q;
+int go(int v, char c);
+int get_link(int v)
+{
+	//printf("%d\n", v);
+	if (link[v] == 0)
+		if (v == 1 || pv[v] == 1) link[v] = 1;
+		else link[v] = go(get_link(pv[v]), pch[v]);
+	return link[v];
+}
+
+
+int go(int v, char c)
+{
+	if (mem[v][c] == 0)
+		if (t[v][c] != 0) mem[v][c] = t[v][c];
+		else if (v == 1) mem[v][c] = 1;
+		else mem[v][c] = go(get_link(v), c);
+	return mem[v][c];
+}
+int main()
+{
+//	freopen("input.txt", "r", stdin);
+//	freopen("output.txt", "w", stdout);
+	int tc;
+	scanf("%d", &tc);
+	while (tc--)
+	{
+		memset(mem, 0, sizeof(mem));
+		memset(t, 0, sizeof(t));
+		memset(link, 0, sizeof(link));
+		memset(terminal, 0, sizeof(terminal));
+		memset(reach, 0, sizeof(reach));
+		scanf("%d%d\n", &n, &m);
+		for (i = 1; i <= n; i++)
+			a[i] = getchar();
+		scanf("\n");
+		int cnt = 1, v;
+		for (i = 1; i <= m; i++)
+		{
+			q = getchar();
+			v = 1;
+			while (q != '\n')
+			{
+			//	putchar(q);
+				q -= 'a';
+				if (t[v][q] == 0)
+				{
+					cnt++;
+					t[v][q] = cnt;
+					pch[cnt] = q;
+					pv[cnt] = v;
+				}
+				v = t[v][q];
+				q = getchar();
+			}
+			terminal[v]++;
+		//	printf("\n");
+		}
+		for (i = 1; i <=n; i++)
+			for (j = 1; j <= cnt; j++)
+				f[i][j] = - inf;
+		for (i = 1; i <= cnt; i++)
+		{
+			v = i;
+			while(v > 1)
+			{
+				reach[i] += terminal[v];
+				v = get_link(v);
+			}
+		}
+		for (i = 1; i <= cnt; i++)
+			f[n + 1][i] = reach[i];
+		for (i = n; i > 0; i--)
+			for (j = 1; j <= cnt; j++)
+			{
+				if (a[i] != '?') f[i][j]=f[i + 1][go(j, a[i] - 'a')] + reach[j];
+				else
+				{
+					for (q = 0; q < 26; q++)
+						f[i][j] = max(f[i][j], f[i + 1][go(j, q)] + reach[j]);
+				}
+			}
+			
+		printf("%d\n", f[1][1]);
+		v = 1;
+		for (i = 1; i <= n; i++)
+		{
+			if (a[i] == '?') 
+			{	
+				q = 'a';
+				int best = f[i + 1][go(v, 0)];
+				for (char c = 1; c < 26; c++)
+					if (f[i + 1][go(v, c)] > best)
+					{
+						best = f[i + 1][go(v, c)];
+						q = c + 'a';
+					}
+			}
+			else q = a[i];
+			printf("%c", q);
+			v = go(v, q - 'a');
+		}
+		printf("\n");
+	}
+}

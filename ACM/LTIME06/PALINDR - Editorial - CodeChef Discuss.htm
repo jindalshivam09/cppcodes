@@ -1,0 +1,978 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0061)http://discuss.codechef.com/questions/30371/palindr-editorial -->
+<html xmlns="http://www.w3.org/1999/xhtml" class=" clickberry-extension clickberry-extension-standalone"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>PALINDR - Editorial - CodeChef Discuss</title>
+        <meta name="description" content="Problem Link:PracticeContestDifficulty:Easy-MediumPre-requisites:Treap, CombinatoricsExplanation:The constraints in the first sub task are very small, so a simple brute force will be enough in order to get a nonzero score atthis problem. In general case, let&#39;s consider the following proble">
+        <meta name="keywords" content="combinatorics,treap,palindr,ltime06,editorial">
+        
+        <link rel="canonical" href="./PALINDR - Editorial - CodeChef Discuss_files/PALINDR - Editorial - CodeChef Discuss.htm">
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="http://discuss.codechef.com/questions/30371/palindr-editorial?type=rss">
+
+        
+        
+        <link rel="shortcut icon" href="http://discuss.codechef.com/upfiles/favicon_1.ico">
+        <link href="./PALINDR - Editorial - CodeChef Discuss_files/style.css" rel="stylesheet" type="text/css">
+        
+        <link href="./PALINDR - Editorial - CodeChef Discuss_files/custom.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="./PALINDR - Editorial - CodeChef Discuss_files/jquery-ui.css">
+        <!--[if IE 6]>
+        <style type="text/css">
+        img, div, a { behavior: url(/m/default/media/iepngfix/iepngfix.htc) }
+        </style>
+        <![endif]-->
+        
+
+        <script src="./PALINDR - Editorial - CodeChef Discuss_files/jsapi" type="text/javascript"></script><style type="text/css"></style>
+        <script type="text/javascript">
+        /*<![CDATA[*/
+            google.load("jquery", "1.4.2");
+            google.load("jqueryui", "1", {autoload:true});
+
+            var i18nLang = 'en';
+            var appUrl = 'http://discuss.codechef.com'
+            var scriptUrl = '/'
+            var osqaSkin = 'default';
+
+            var messages = {
+                username: 'jindalshivam09',
+                confirm: "Are you sure?",
+                yes: "Yes",
+                no: "No",
+                message: "Message:",
+                cancel: "Cancel",
+                close: "Close",
+                ok: "Ok",
+                matching_tags_url: "/matching_tags/",
+                word: "word",
+                words: "words",
+                character: "character",
+                characters: "characters"
+            }
+        /*]]>*/
+        </script><script src="./PALINDR - Editorial - CodeChef Discuss_files/jquery.min.js" type="text/javascript"></script><script src="./PALINDR - Editorial - CodeChef Discuss_files/jquery-ui.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="./PALINDR - Editorial - CodeChef Discuss_files/osqa.main.js"></script>
+        
+        
+        
+        
+        
+        <script type="text/javascript" src="./PALINDR - Editorial - CodeChef Discuss_files/osqa.question.js"></script>
+        <script type="text/javascript" src="./PALINDR - Editorial - CodeChef Discuss_files/jquery.caret.js"></script>
+        <script type="text/javascript" src="./PALINDR - Editorial - CodeChef Discuss_files/showdown.js"></script>
+        <script type="text/javascript" src="./PALINDR - Editorial - CodeChef Discuss_files/wmd.js"></script>
+        <link rel="stylesheet" type="text/css" href="./PALINDR - Editorial - CodeChef Discuss_files/wmd.css">
+
+        
+        <script type="text/javascript" src="./PALINDR - Editorial - CodeChef Discuss_files/viewbox_min.js"></script>
+        <script type="text/javascript" src="./PALINDR - Editorial - CodeChef Discuss_files/youtube.js"></script>
+        <link rel="stylesheet" type="text/css" href="./PALINDR - Editorial - CodeChef Discuss_files/viewbox.css">
+        
+        
+
+        <script type="text/javascript">
+        $().ready(function(){
+            $("#nav_questions").attr('className',"on");
+            var answer_sort_tab = "";
+
+            if (answer_sort_tab) {
+                $("#" + answer_sort_tab).attr('className',"on");
+            }
+
+            $('#editor').TextAreaResizer();
+
+            //toggle preview of editor
+            var display = true;
+            var txt = "[hide preview]";
+            $('#pre-collapse').text(txt);
+            $('#pre-collapse').bind('click', function(){
+                txt = display ? "[show preview]" : "[hide preview]";
+                display = !display;
+                $('#previewer').toggle();
+                $('#pre-collapse').text(txt);
+            });
+        });
+
+        function submitClicked(e, f) {
+            if(!(browserTester('chrome') || browserTester('safari'))) {
+                $("input.submit")[0].disabled=true;
+            }
+            window.removeEventListener('beforeunload', beforeUnload, true);
+            if (f) {
+                f.submit();
+            }
+        }
+
+        function beforeUnload(e) {
+
+            if($("textarea#editor")[0].value != "") {
+                return yourWorkWillBeLost(e);
+            }
+
+            var commentBoxes = $("textarea.commentBox");
+            for(var index = 0; index < commentBoxes.length; index++) {
+                if(commentBoxes[index].value != "") {
+                    return yourWorkWillBeLost(e);
+                }
+            }
+        }
+        window.addEventListener('beforeunload', beforeUnload, true);
+        </script>
+        <noscript>
+            &lt;style&gt;
+                .comment.not_top_scorer {
+                    display: block;
+                }
+                .comment-form-container {
+                    display: block;
+                }
+                .div.comment-tools {
+                    display: none;
+                }
+            &lt;/style&gt;
+        </noscript>
+
+        <link rel="search" type="application/opensearchdescription+xml" href="http://discuss.codechef.com/opensearch.xml" title="CodeChef Discuss Search">
+        
+    <meta content="clickberry-extension-here"><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/document_iterator.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/find_proxy.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/get_html_text.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/global_constants.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/name_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/number_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/menu_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/string_finder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/change_sink.js"></script><meta name="document_iterator.js"><meta name="get_html_text.js"><meta name="global_constants.js"><meta name="find_proxy.js"><meta name="name_injection_builder.js"><meta name="menu_injection_builder.js"><meta name="string_finder.js"><meta name="change_sink.js"><meta name="number_injection_builder.js"></head>
+    <body>
+        <div class="wrapper">
+        
+        <!-- template header.html -->
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        initSearchBoxValue();
+    })
+
+
+    function initSearchBoxValue()
+    {
+        var searchKeyword= $("#keywords").val();
+            if (searchKeyword=="")
+            {
+                $("#keywords").val("Search Here...");
+            }
+   }
+
+    function searchBoxOnBlur(){
+        $("#keyword").className="searchInput";
+        if ($("#keywords").val()=="")
+                $("#keywords").val("Search Here...");
+    }
+
+    function searchBoxOnFocus(){
+        $("#keyword").className="searchInputFocused";
+        if ($("#keywords").val()=="Search Here...")
+            $("#keywords").val("");
+   }
+
+    function about(){
+        if (document.URL=="http://osqa.codechef.local/about/")
+        {
+            $("")
+        }
+    }
+
+</script>
+
+
+
+ 
+
+	<div id="roof">
+
+
+
+		<div id="logo">
+			<a href="http://discuss.codechef.com/">
+				<img src="./PALINDR - Editorial - CodeChef Discuss_files/site-logo_2.png" title="back to home page" alt="CodeChef Discuss logo">
+			</a>
+		</div>
+	  
+		<div id="top">
+		     <a href="http://discuss.codechef.com/users/11797/jindalshivam09">jindalshivam09</a> <span class="score" title="36 karma">36</span><span title="1 badges"><span class="silver">●</span><span class="badgecount">1</span></span><span title="4 badges"><span class="bronze">●</span><span class="badgecount">4</span></span> <a href="http://discuss.codechef.com/logout/">Log Out</a> 
+
+            <div id="nav">
+                <a id="nav_questions" class="on" href="http://discuss.codechef.com/questions/">questions</a><a id="nav_tags" href="http://discuss.codechef.com/tags/">tags</a><a id="nav_users" href="http://discuss.codechef.com/users/">users</a><a id="nav_badges" href="http://discuss.codechef.com/badges/">badges</a><a id="nav_unanswered" href="http://discuss.codechef.com/questions/unanswered/">unanswered</a>
+                <a id="horiSeparator">
+                </a><a id="nav_ask" href="http://discuss.codechef.com/questions/ask/" class="special">ask a question</a>
+                <a id="nav_about" href="http://discuss.codechef.com/about" class="off" onclick="about()">about</a>
+                <a id="nav_faq" href="http://discuss.codechef.com/faq">faq</a>
+
+            </div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <div class="clear"></div>
+	<div id="searchBar">
+
+
+
+
+        <table id="searchBarTable">
+            <tbody><tr>
+                <td class="left">
+                    CodeChef Discussion
+                </td>
+                <td class="right">
+                    <form action="http://discuss.codechef.com/search/" method="get">
+                    <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="634dbe74fe897b0faaf08de7ec2675f4"></div>
+                        <table>
+                            <tbody><tr>
+                                <td>
+                                    <input type="text" class="searchInput" value="" name="q" id="keywords" onfocus="searchBoxOnFocus()" onblur="searchBoxOnBlur()">
+                                </td>
+                                <td>
+                                    <div class="options">
+                                        <input id="type-question" type="radio" value="question" name="t" checked="checked"><label for="type-question">questions</label>
+                                        <input id="type-tag" type="radio" value="tag" name="t"><label for="type-tag">tags</label>
+                                        <input id="type-user" type="radio" value="user" name="t"><label for="type-user">users</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </form>
+                </td>
+            </tr>
+        </tbody></table>
+        <h1 id="separator">
+        </h1>
+	</div>
+
+
+	
+
+<!-- end template header.html -->
+
+        
+
+
+
+<div id="wrapper">
+    
+    
+    <div id="room">
+        <div id="CALeft">
+            
+<div class="headNormal">
+    <h1>PALINDR - Editorial</h1>
+</div>
+<div id="main-body" class="">
+    <div id="askform">
+            <table style="width:100%;" id="question-table">
+                <tbody><tr>
+                    <td style="width:30px;vertical-align:top">
+                        <div class="vote-buttons">
+                            
+
+<a id="post-30371-upvote" title="I like this post (click again to cancel)" class="ajax-command post-vote up " href="http://discuss.codechef.com/vote/30371/up/" rel="nofollow"> </a>
+<div id="post-30371-score" class="post-score" title="current number of votes">
+    0
+</div>
+<a id="post-30371-downvote" title="I dont like this post (click again to cancel)" class="ajax-command post-vote down" href="http://discuss.codechef.com/vote/30371/down/" rel="nofollow"> </a>
+                            
+
+<a id="favorite-mark" title="mark/unmark this question as favorite (click again to cancel)" class="ajax-command favorite-mark " href="http://discuss.codechef.com/mark_favorite/30371/" rel="nofollow"> </a>
+<div id="favorite-count" class="favorite-count">
+   
+</div>
+
+                        </div>
+                    </td>
+                    <td>
+                        <div id="item-right">
+                            <div class="question-body">
+                                <h1>Problem Link:</h1>
+<p><a href="http://www.codechef.com/problems/PALINDR">Practice</a><br>
+<a href="http://www.codechef.com/LTIME06/problems/PALINDR">Contest</a></p>
+<h1>Difficulty:</h1>
+<p>Easy-Medium</p>
+<h1>Pre-requisites:</h1>
+<p>Treap, Combinatorics</p>
+<h1>Explanation:</h1>
+<p>The constraints in the first sub task are very small, so a simple brute force will be enough in order to get a nonzero score at
+this problem. </p>
+<p>In general case, let's consider the following problem: you are given the number of each symbol's occurences and now 
+you're asked to calculate the number of different palindromes that one can obtain by permutting all these letters in some way.
+Let's consider that the i-th alphabet letter occurs <strong>A[i]</strong> times, i.e. 'a' occurs <strong>A[1]</strong> times, 'b' occurs <strong>A[2]</strong> times, and so on.
+Then, we can make some observations. At first, if <strong>A[]</strong> contains more than one odd number (i.e. there are two letters that occurs
+odd number of times), then it's impossible to create a palindrome at all. So, in this case the answer if zero. Otherwise, if there
+is one such letter, then this letter will be the "center" of the palindrome, so we place it in the center and decrease the number
+of these letters. Now, <strong>A[]</strong> contains only even numbers. It's a well known fact that knowing the length of the palindrome, let's call
+it <strong>K</strong>, and the first <strong>(K+1)/2</strong> letters of it, it's trivial to reconstruct it. Also, it's not hard to see that the number of occurrences
+of each letter in the left half of a palindrome string equals to the number of occurences of each letter in the right half of a
+palindrome string. Based on this, we just have to calculate the number of different ways to place <strong>(K+1)/2</strong> letters of 10 types 
+(i.e. 'a' to 'i'), where the amount of letter of every type if known. It's a well known combinatorial problem and the answer will
+be <strong>((K+1)/2)!/((A[1]/2)! * (A[2]/2)! * ... * (A[10]/2)!)</strong>. It is asked to output the result modulo a prime number, so you can use a well
+known modular multiplicative inverse calculation trick in order to calculate the answer. With a proper implementation, overall
+complexity of a single such a query will be O(alphabet). </p>
+<p>So now, in the second subtask you can perform all the operations in a simple way. When you need to reverse the string, you can
+do it in O(N) time. To answer the queries of another type, you can calculate the array <strong>A[]</strong> and then solve the problem in O(alphabet)
+complexity, which is in fact very fast. So, this way we get O(M * N * alphabet) solution.</p>
+<p>In order to pass the last sub task, you need to use some advanced data structure. Writer's solution uses treap, which seems the
+easiest way to solve the problem. The queries treap should maintain are quite standard for this structure - namely reversing the
+segment and counting the number of some letter's occurences, so it shouldn't cause any problem.</p>
+<h1>Setter's solution:</h1>
+<p>Can be found <a href="http://www.codechef.com/download/Solutions/LTIME06/Setter/PALINDR.cpp">here</a></p>
+<h1>Tester's solution:</h1>
+<p>Can be found <a href="http://www.codechef.com/download/Solutions/LTIME06/Tester/PALINDR.cpp">here</a></p>
+                            </div>
+                            <div id="question-tags" class="tags-container tags">
+                                
+                                    <a href="http://discuss.codechef.com/tags/combinatorics/" class="post-tag tag-link-combinatorics" title="see questions tagged &#39;combinatorics&#39;" rel="tag">combinatorics</a>
+                                
+                                    <a href="http://discuss.codechef.com/tags/treap/" class="post-tag tag-link-treap" title="see questions tagged &#39;treap&#39;" rel="tag">treap</a>
+                                
+                                    <a href="http://discuss.codechef.com/tags/palindr/" class="post-tag tag-link-palindr" title="see questions tagged &#39;palindr&#39;" rel="tag">palindr</a>
+                                
+                                    <a href="http://discuss.codechef.com/tags/ltime06/" class="post-tag tag-link-ltime06" title="see questions tagged &#39;ltime06&#39;" rel="tag">ltime06</a>
+                                
+                                    <a href="http://discuss.codechef.com/tags/editorial/" class="post-tag tag-link-editorial" title="see questions tagged &#39;editorial&#39;" rel="tag">editorial</a>
+                                
+                            </div>
+                            <div id="question-controls" class="post-controls">
+                                
+<span class="action-link"><a rel="nofollow" title="report as offensive (i.e containing spam, advertising, malicious text, etc.)" class="ajax-command withprompt  " href="http://discuss.codechef.com/flag/30371/">report (0)</a></span>
+                                
+
+                            </div>
+                            <div class="post-update-info-container">
+                                    
+<div class="post-update-info post-update-info-user">
+    <p style="line-height:12px;">
+        asked
+        <strong>2 days ago</strong>
+    </p>
+    <img class="gravatar" width="32" height="32" src="./PALINDR - Editorial - CodeChef Discuss_files/4d2e2cb3a637b8923ab5bdb95e54b08e.jpg" alt="xcwgf666&#39;s gravatar image">
+    <p><a href="http://discuss.codechef.com/users/10879/xcwgf666">xcwgf666 ♦♦</a><br>
+    <span class="score" title="196 karma">196</span><span title="6 badges"><span class="badge1">●</span><span class="badgecount">6</span></span><span title="12 badges"><span class="silver">●</span><span class="badgecount">12</span></span><span title="15 badges"><span class="bronze">●</span><span class="badgecount">15</span></span><br>
+    
+    <span title="Rate of the user&#39;s accepted answers" class="accept_rate">accept rate:</span>
+    <span title="xcwgf666 has no accepted answers">0%</span>
+    </p>
+</div>
+
+
+                            </div>
+                            
+
+
+<div class="comments-container" id="comments-container-30371">
+    
+        <a name="30525"></a>
+        <div class="comment" id="comment-30525">
+            <div id="post-30525-score" class="comment-score"></div>
+            <div class="comment-text"><p>Please explain how the treaps are used in reversing the string. I have gone through the writer's solution but unable to understand it properly.</p></div>
+            <div class="comment-info" id="comment-30525-info">
+                
+                
+                    <a id="comment-30525-edit" href="http://discuss.codechef.com/node_markdown/30525/" title="Edit comment" class="comment-edit" rel="nofollow"> </a>
+                
+                
+                    <a id="comment-30525-delete" href="http://discuss.codechef.com/delete_comment/30525/" title="Delete comment" class="ajax-command comment-delete confirm" rel="nofollow"> </a>
+                
+                
+                    <a rel="nofollow" id="comment-30525-convert" href="http://discuss.codechef.com/convert_comment/30525/" title="Convert comment to answer" class="ajax-command comment-convert confirm"> </a>
+                    <a rel="nofollow" id="comment-30525-convert-to-question" href="http://discuss.codechef.com/convert_to_question/30525/?node_type=comment" title="Convert comment to question" class="comment-convert-to-question"> </a>
+                
+                    
+
+                <span class="comment-age">(13 mins ago)</span>
+                <a class="comment-user userinfo" href="http://discuss.codechef.com/users/11797/jindalshivam09">jindalshivam09</a>
+                
+            </div>
+        </div>
+    
+</div>
+<div id="comment-tools-30371" class="comment-tools">
+    
+    
+        <a href="http://discuss.codechef.com/questions/30371/palindr-editorial#" class="add-comment-link">add new comment</a>
+    
+</div>
+<div id="comment-30371-form-container" class="comment-form-container">
+    
+    <form id="comment-30371-form" method="post" action="http://discuss.codechef.com/comment/30371/" accept-charset="utf-8"><div style="display:none;"><input type="hidden" id="csrfmiddlewaretoken" name="csrfmiddlewaretoken" value="634dbe74fe897b0faaf08de7ec2675f4"></div>
+        <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="634dbe74fe897b0faaf08de7ec2675f4"></div>
+        <div class="comment-form-widgets-container">
+            <textarea name="comment" class="commentBox" id="comment" style="padding-top: 0px; padding-bottom: 0px; resize: none; overflow: hidden; height: 80px;"></textarea>
+            <div class="comment-form-buttons">
+                <span id="comment-30371-chars-left" class="comment-chars-left">
+                    <span class="comments-char-left-count">10</span>
+                    <span class="comments-chars-togo-msg">characters needed</span>
+                    <span class="comments-chars-left-msg" style="display: none;">characters left</span>
+                </span>
+                <input type="submit" class="comment-submit" value=" comment" disabled="">
+                <input type="submit" class="comment-cancel" value=" cancel">
+            </div>
+            <div class="clear"></div>
+            
+        </div>
+        <script type="text/html" class="new-comment-skeleton" id="new-comment-skeleton-30371">
+            <div class="comment not_top_scorer" id="comment-%ID%">
+                <div id="post-%ID%-score" class="comment-score"></div>
+                <div class="comment-text">%COMMENT%</div>
+                <div class="comment-info" id="comment-%ID%-info">
+                    <a id="comment-%ID%-edit" href="%EDIT_URL%" title="Edit comment"
+                        class="comment-edit" rel="nofollow"> </a>
+                    <a id="comment-%ID%-delete" href="%DELETE_URL%" title="Delete comment"
+                        class="ajax-command comment-delete confirm" rel="nofollow"> </a>
+                    <a rel="nofollow" id="comment-%ID%-convert" style="display:none;" href="%CONVERT_URL%" title="Convert comment to answer"
+                        class="ajax-command comment-convert confirm" rel="nofollow"> </a>
+
+                    <span class="comment-age">(just now)</span>
+                    <a class="comment-user" href="%PROFILE_URL%">%USERNAME%</a>
+                    
+                        
+                    
+                </div>
+             </div>
+        </script>
+    </form>
+    
+</div>
+    
+
+                        </div>
+
+                    </td>
+                </tr>
+            </tbody></table>
+            
+            
+                <hr>
+                <div class="tabBar">
+                    <a name="sort-top"></a>
+                    <div class="headQuestions">
+                    2 Answers:
+                    </div>
+                    
+<div class="tabsA"><a href="http://discuss.codechef.com/questions/30371/palindr-editorial?sort=oldest" title="oldest answers will be shown first">oldest</a><a href="http://discuss.codechef.com/questions/30371/palindr-editorial?sort=newest" title="newest answers will be shown first">newest</a><a href="http://discuss.codechef.com/questions/30371/palindr-editorial?sort=votes" class="on" title="most voted answers will be shown first">most voted</a></div>
+
+                </div>
+                
+
+                
+                    <a name="30377"></a>
+                    <div id="answer-container-30377" class="answer ">
+                        <table style="width:100%;">
+                            <tbody><tr>
+                                <td style="width:30px;vertical-align:top">
+                                    <div class="vote-buttons">
+                                        
+
+<a id="post-30377-upvote" title="I like this post (click again to cancel)" class="ajax-command post-vote up " href="http://discuss.codechef.com/vote/30377/up/" rel="nofollow"> </a>
+<div id="post-30377-score" class="post-score" title="current number of votes">
+    4
+</div>
+<a id="post-30377-downvote" title="I dont like this post (click again to cancel)" class="ajax-command post-vote down" href="http://discuss.codechef.com/vote/30377/down/" rel="nofollow"> </a>
+                                        
+
+
+    
+
+
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="item-right">
+                                        <div class="answer-body">
+                                            <p>So what is the time complexity of the solution passing all the test cases? <strong>O(M * log(N) * alphabet)</strong> ?</p>
+<p>There is another simple solution with an <strong>O((M + N) * sqrt(M) * alphabet)</strong> time complexity, but I am not sure it would fit within the time limit for all the test cases. In case anyone is interested, the idea of this solution is as follows. Let's choose a number <strong>Q</strong>. Then we will perform all the operations (queries and updates) in chunks of <strong>Q</strong> operations. Before the start of each chunk we know the full state of the string. After each operation, the string will consists of a number of pieces. Each piece consists of an interval of consecutive positions from the string from the beginning of the chunk (the interval of positions can be either in normal order or in reverse order). Then, when we need to perform an operation, we locate the pieces which contain its endpoints and split these pieces - this way, each operation will refer to an interval of pieces. Splitting a piece in two can be performed in <strong>O(alphabet)</strong> time (by having prefix sums computed for each character and each position of the string from the beginning of the chunk). Then an update simply reverses the order of an interval of pieces (and also changes their state: from normal order to reverse order or the other way around) and a query simply traverses all the pieces within its interval in order to compute the number of times each letter of the alphabet occurs. Each operation creates at most 2 new pieces and at the beginning of the chunk we had only 1 piece. Thus, we end up with <strong>O(Q)</strong> pieces and each operation takes <strong>O(Q * alphabet)</strong> time. After performing all the <strong>Q</strong> operations we will reconstruct the string and have it ready for the next chunk of operations. Reconstructing the string can be performed in <strong>O(N)</strong> time by traversing the pieces and adding the characters of the piece (in normal or reverse order, depending on the state of the piece). But we also need to compute prefix sums for each character of the alphabet, which takes <strong>O(N * alphabet)</strong> time. Thus, the overall time complexity is <strong>O(M * Q * alphabet + N * (M / Q) * alphabet)</strong>. By choosing <strong>Q=O(sqrt(M))</strong> we obtain the stated time complexity.</p>
+                                        </div>
+                                        <div class="answer-controls post-controls">
+                                            
+<span class="action-link"><a rel="nofollow" title="answer permanent link" class="ajax-command withprompt  copy" href="http://discuss.codechef.com/answer_link/30377/">link</a></span><span class="action-link-separator">|</span><span class="action-link"><a rel="nofollow" title="award points to mugurelionut" class="ajax-command withprompt  " href="http://discuss.codechef.com/award_points/user/7523/answer/30377/">award points</a></span><span class="action-link-separator">|</span><span class="action-link"><a rel="nofollow" title="report as offensive (i.e containing spam, advertising, malicious text, etc.)" class="ajax-command withprompt  " href="http://discuss.codechef.com/flag/30377/">report (0)</a></span>
+                                            
+
+                                        </div>
+                                        <div class="post-update-info-container">
+                                            
+<div class="post-update-info post-update-info-user">
+    <p style="line-height:12px;">
+        answered
+        <strong>2 days ago</strong>
+    </p>
+    <img class="gravatar" width="32" height="32" src="./PALINDR - Editorial - CodeChef Discuss_files/default.jpg" alt="mugurelionut&#39;s gravatar image">
+    <p><a href="http://discuss.codechef.com/users/7523/mugurelionut">mugurelionut</a><br>
+    <span class="score" title="4879 karma"><span class="">4.9k</span></span><span title="15 badges"><span class="badge1">●</span><span class="badgecount">15</span></span><span title="42 badges"><span class="silver">●</span><span class="badgecount">42</span></span><span title="50 badges"><span class="bronze">●</span><span class="badgecount">50</span></span><br>
+    
+    <span title="Rate of the user&#39;s accepted answers" class="accept_rate">accept rate:</span>
+    <span title="mugurelionut has 7 accepted answers">14%</span>
+    </p>
+</div>
+
+
+                                        </div>
+                                        
+
+
+<div class="comments-container" id="comments-container-30377">
+    
+</div>
+<div id="comment-tools-30377" class="comment-tools">
+    
+    
+        <a href="http://discuss.codechef.com/questions/30371/palindr-editorial#" class="add-comment-link">add new comment</a>
+    
+</div>
+<div id="comment-30377-form-container" class="comment-form-container">
+    
+    <form id="comment-30377-form" method="post" action="http://discuss.codechef.com/comment/30377/" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="csrfmiddlewaretoken" value="634dbe74fe897b0faaf08de7ec2675f4"></div>
+        <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="634dbe74fe897b0faaf08de7ec2675f4"></div>
+        <div class="comment-form-widgets-container">
+            <textarea name="comment" class="commentBox" id="comment" style="padding-top: 0px; padding-bottom: 0px; resize: none; overflow: hidden; height: 80px;"></textarea>
+            <div class="comment-form-buttons">
+                <span id="comment-30377-chars-left" class="comment-chars-left">
+                    <span class="comments-char-left-count">10</span>
+                    <span class="comments-chars-togo-msg">characters needed</span>
+                    <span class="comments-chars-left-msg" style="display: none;">characters left</span>
+                </span>
+                <input type="submit" class="comment-submit" value=" comment" disabled="">
+                <input type="submit" class="comment-cancel" value=" cancel">
+            </div>
+            <div class="clear"></div>
+            
+        </div>
+        <script type="text/html" class="new-comment-skeleton" id="new-comment-skeleton-30377">
+            <div class="comment not_top_scorer" id="comment-%ID%">
+                <div id="post-%ID%-score" class="comment-score"></div>
+                <div class="comment-text">%COMMENT%</div>
+                <div class="comment-info" id="comment-%ID%-info">
+                    <a id="comment-%ID%-edit" href="%EDIT_URL%" title="Edit comment"
+                        class="comment-edit" rel="nofollow"> </a>
+                    <a id="comment-%ID%-delete" href="%DELETE_URL%" title="Delete comment"
+                        class="ajax-command comment-delete confirm" rel="nofollow"> </a>
+                    <a rel="nofollow" id="comment-%ID%-convert" style="display:none;" href="%CONVERT_URL%" title="Convert comment to answer"
+                        class="ajax-command comment-convert confirm" rel="nofollow"> </a>
+
+                    <span class="comment-age">(just now)</span>
+                    <a class="comment-user" href="%PROFILE_URL%">%USERNAME%</a>
+                    
+                        
+                    
+                </div>
+             </div>
+        </script>
+    </form>
+    
+</div>
+    
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                
+                    <a name="30527"></a>
+                    <div id="answer-container-30527" class="answer ">
+                        <table style="width:100%;">
+                            <tbody><tr>
+                                <td style="width:30px;vertical-align:top">
+                                    <div class="vote-buttons">
+                                        
+
+<a id="post-30527-upvote" title="I like this post (click again to cancel)" class="ajax-command post-vote up " href="http://discuss.codechef.com/vote/30527/up/" rel="nofollow"> </a>
+<div id="post-30527-score" class="post-score" title="current number of votes">
+    0
+</div>
+<a id="post-30527-downvote" title="I dont like this post (click again to cancel)" class="ajax-command post-vote down" href="http://discuss.codechef.com/vote/30527/down/" rel="nofollow"> </a>
+                                        
+
+
+    
+
+
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="item-right">
+                                        <div class="answer-body">
+                                            <p>Please explain how the treaps are used in reversing the string. I have gone through the writer's solution but unable to understand it properly.</p>
+                                        </div>
+                                        <div class="answer-controls post-controls">
+                                            
+<span class="action-link"><a rel="nofollow" title="answer permanent link" class="ajax-command withprompt  copy" href="http://discuss.codechef.com/answer_link/30527/">link</a></span><span class="action-link-separator">|</span><span class="action-link"><a rel="nofollow" title="" class="    " href="http://discuss.codechef.com/answers/30527/edit/">edit</a></span><span class="action-link-separator">|</span><span class="action-link"><a rel="nofollow" title="" class="ajax-command  confirm " href="http://discuss.codechef.com/delete/30527/">delete</a></span><span class="action-link-separator">|</span><span id="node-30527-menu" class="context-menu"><span id="node-30527-menu-trigger" class="action-link context-menu-trigger">more ▼</span><ul id="node-30527-menu-dropdown" class="context-menu-dropdown"><li class="item"><a rel="nofollow" class="    " href="http://discuss.codechef.com/revisions/30527/" title="">see revisions</a></li><li class="item"><a rel="nofollow" class="ajax-command  confirm " href="http://discuss.codechef.com/wikify/30527/" title="">mark as community wiki</a></li><li class="item"><a rel="nofollow" class="ajax-command withprompt  " href="http://discuss.codechef.com/convert/30527/" title="">convert to comment</a></li><li class="item"><a rel="nofollow" class="   confirm " href="http://discuss.codechef.com/convert_to_question/30527/" title="">convert to question</a></li></ul></span>
+                                            
+
+                                        </div>
+                                        <div class="post-update-info-container">
+                                            
+<div class="post-update-info post-update-info-user">
+    <p style="line-height:12px;">
+        answered
+        <strong>13 mins ago</strong>
+    </p>
+    <img class="gravatar" width="32" height="32" src="./PALINDR - Editorial - CodeChef Discuss_files/92e28b9425ec4124cb1ded0b524da2eb.58" alt="jindalshivam09&#39;s gravatar image">
+    <p><a href="http://discuss.codechef.com/users/11797/jindalshivam09">jindalshivam09</a><br>
+    <span class="score" title="36 karma">36</span><span title="1 badges"><span class="silver">●</span><span class="badgecount">1</span></span><span title="4 badges"><span class="bronze">●</span><span class="badgecount">4</span></span><br>
+    
+    <span title="Rate of the user&#39;s accepted answers" class="accept_rate">accept rate:</span>
+    <span title="jindalshivam09 has no accepted answers">0%</span>
+    </p>
+</div>
+
+
+                                        </div>
+                                        
+
+
+<div class="comments-container" id="comments-container-30527">
+    
+</div>
+<div id="comment-tools-30527" class="comment-tools">
+    
+    
+        <a href="http://discuss.codechef.com/questions/30371/palindr-editorial#" class="add-comment-link">add new comment</a>
+    
+</div>
+<div id="comment-30527-form-container" class="comment-form-container">
+    
+    <form id="comment-30527-form" method="post" action="http://discuss.codechef.com/comment/30527/" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="csrfmiddlewaretoken" value="634dbe74fe897b0faaf08de7ec2675f4"></div>
+        <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="634dbe74fe897b0faaf08de7ec2675f4"></div>
+        <div class="comment-form-widgets-container">
+            <textarea name="comment" class="commentBox" id="comment" style="padding-top: 0px; padding-bottom: 0px; resize: none; overflow: hidden; height: 80px;"></textarea>
+            <div class="comment-form-buttons">
+                <span id="comment-30527-chars-left" class="comment-chars-left">
+                    <span class="comments-char-left-count">10</span>
+                    <span class="comments-chars-togo-msg">characters needed</span>
+                    <span class="comments-chars-left-msg" style="display: none;">characters left</span>
+                </span>
+                <input type="submit" class="comment-submit" value=" comment" disabled="">
+                <input type="submit" class="comment-cancel" value=" cancel">
+            </div>
+            <div class="clear"></div>
+            
+        </div>
+        <script type="text/html" class="new-comment-skeleton" id="new-comment-skeleton-30527">
+            <div class="comment not_top_scorer" id="comment-%ID%">
+                <div id="post-%ID%-score" class="comment-score"></div>
+                <div class="comment-text">%COMMENT%</div>
+                <div class="comment-info" id="comment-%ID%-info">
+                    <a id="comment-%ID%-edit" href="%EDIT_URL%" title="Edit comment"
+                        class="comment-edit" rel="nofollow"> </a>
+                    <a id="comment-%ID%-delete" href="%DELETE_URL%" title="Delete comment"
+                        class="ajax-command comment-delete confirm" rel="nofollow"> </a>
+                    <a rel="nofollow" id="comment-%ID%-convert" style="display:none;" href="%CONVERT_URL%" title="Convert comment to answer"
+                        class="ajax-command comment-convert confirm" rel="nofollow"> </a>
+
+                    <span class="comment-age">(just now)</span>
+                    <a class="comment-user" href="%PROFILE_URL%">%USERNAME%</a>
+                    
+                        
+                    
+                </div>
+             </div>
+        </script>
+    </form>
+    
+</div>
+    
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </div>
+                
+                <div class="paginator-container-left">
+                    
+                </div>
+            
+        <form id="fmanswer" action="http://discuss.codechef.com/questions/30371/answer/" method="post"><div style="display:none;"><input type="hidden" name="csrfmiddlewaretoken" value="634dbe74fe897b0faaf08de7ec2675f4"></div>
+            <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="634dbe74fe897b0faaf08de7ec2675f4"></div>
+            <div style="clear:both">
+            </div>
+
+            
+                <div style="padding:10px 0 0 0;">
+                    <div class="headNormal">
+                        
+                            Your answer
+                        
+                    </div>
+                </div>
+                
+
+                <div id="description" class="">
+                    <div id="wmd-button-bar" class="wmd-panel"><ul id="wmd-button-row"><li class="wmd-button" id="wmd-bold-button" title="Strong &lt;strong&gt; Ctrl+B" style="background-position: 0px 0px;"></li><li class="wmd-button" id="wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I" style="background-position: -20px 0px;"></li><li class="wmd-spacer" id="wmd-spacer1"></li><li class="wmd-button" id="wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L" style="background-position: -40px 0px;"></li><li class="wmd-button" id="wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q" style="background-position: -60px 0px;"></li><li class="wmd-button" id="wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K" style="background-position: -80px 0px;"></li><li class="wmd-button" id="wmd-image-button" title="Image &lt;img&gt; Ctrl+G" style="background-position: -100px 0px;"></li><li class="wmd-spacer" id="wmd-spacer2"></li><li class="wmd-button" id="wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O" style="background-position: -120px 0px;"></li><li class="wmd-button" id="wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U" style="background-position: -140px 0px;"></li><li class="wmd-button" id="wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H" style="background-position: -160px 0px;"></li><li class="wmd-button" id="wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R" style="background-position: -180px 0px;"></li><li class="wmd-spacer" id="wmd-spacer3"></li><li class="wmd-button" id="wmd-undo-button" title="Undo - Ctrl+Z" style="background-position: -200px -20px;"></li><li class="wmd-button" id="wmd-redo-button" title="Redo - Ctrl+Y" style="background-position: -220px -20px;"></li><li class="wmd-button" id="wmd-help-button" style="background-position: -240px 0px;"><a href="http://wmd-editor.com/" target="_blank" title="WMD website"></a></li></ul></div>
+                    <div class="resizable-textarea"><span><textarea rows="10" cols="40" name="text" id="editor" class="processed"></textarea><div class="grippie" style="margin-right: -6px;"></div></span></div>
+                    <div class="preview-toggle">
+                        <table width="100%">
+                            <tbody><tr>
+                                <td>
+                                    <span id="pre-collapse" title="Toggle the real time Markdown editor preview">[hide preview]</span>
+                                </td>
+                                <td style="text-align: right;" id="editor-metrics"></td>
+                                
+                                <td style="text-align:right;">
+                                    <input type="checkbox" name="wiki" id="id_wiki">
+                                    <span style="font-weight:normal;cursor:help" title="if you choose community wiki option, the question and answer do not generate points and name of author will not be shown">
+                                            <label for="id_wiki">community wiki</label> 
+                                    </span>
+                                </td>
+                                
+                            </tr>
+
+                        </tbody></table>
+                    </div>
+                    
+                    <div id="previewer" class="wmd-preview"></div>
+                </div>
+
+	            
+
+                <p><span class="form-error"></span></p>
+                
+                <input type="button" value="Post Your Answer" class="submit" style="float:left" onclick="submitClicked(event, this.form)">
+            
+        </form>
+    </div>
+</div>
+
+
+        </div>
+        <div id="CARight">
+            
+<div class="boxC" id="subscription_box">
+    <h3 class="subtitle">Follow this question</h3><strong>By Email:</strong><div class="subscription-status"><p>You were automatically subscribed to this question.</p></div><p><a class="ajax-command sidebar_button subscription_switch" href="http://discuss.codechef.com/subscribe/30371/">
+        
+            unsubscribe me
+        
+    </a></p><p>
+        
+            (you can adjust your notification settings on your <a href="http://discuss.codechef.com/users/11797/jindalshivam09/subscriptions/">profile</a>)
+        
+    </p><strong>By RSS:</strong><p><a class="feed-icon" style="background-image:url(&#39;/m/default/media/images/feed-icon-small.png&#39;);" href="http://discuss.codechef.com/questions/30371/palindr-editorial?type=rss" title="subscribe to answers"></a>
+    Answers
+</p><p><a class="feed-icon" style="background-image:url(&#39;/m/default/media/images/feed-icon-small.png&#39;);" href="http://discuss.codechef.com/questions/30371/palindr-editorial?type=rss&comments=yes" title="subscribe to comments and answers"></a>
+    Answers and Comments
+</p>
+
+</div>
+
+
+<div class="boxC" id="editor_side_bar" style="display: none;">
+    <p class="subtitle darkred">Markdown Basics</p>
+    <ul class="list-item">
+        <li>
+            *italic* or _italic_
+        </li>
+        <li>
+			**bold** or __bold__
+        </li>
+        <li>
+            <b>link</b>:[text](http://url.com/ "title")
+
+        </li>
+
+        <li>
+            <b>image</b>?![alt text](/path/img.jpg "title")
+
+        </li>
+        <li>
+			numbered list:
+            1.  Foo
+            2.  Bar
+        </li>
+        <li>
+			to add a line break simply add two spaces to where you would like the new line to be.
+        </li>
+        <li>
+			basic HTML tags are also supported
+        </li>
+    </ul>
+    <p class="info-box-follow-up-links">
+        <a href="http://discuss.codechef.com/markdown_help/" target="_blank">learn more about Markdown </a>
+    </p>
+</div>
+
+
+
+
+
+
+
+
+<div class="boxC">
+    <p>
+		Tags:
+    </p>
+    <p class="tags">
+        
+        	<a href="http://discuss.codechef.com/tags/editorial/" class="tag-link-editorial" title="see questions tagged&#39;editorial&#39;using tags" rel="tag">editorial</a> <span class="tag-number">×607</span><br>
+        
+        	<a href="http://discuss.codechef.com/tags/combinatorics/" class="tag-link-combinatorics" title="see questions tagged&#39;combinatorics&#39;using tags" rel="tag">combinatorics</a> <span class="tag-number">×26</span><br>
+        
+        	<a href="http://discuss.codechef.com/tags/ltime06/" class="tag-link-ltime06" title="see questions tagged&#39;ltime06&#39;using tags" rel="tag">ltime06</a> <span class="tag-number">×4</span><br>
+        
+        	<a href="http://discuss.codechef.com/tags/palindr/" class="tag-link-palindr" title="see questions tagged&#39;palindr&#39;using tags" rel="tag">palindr</a> <span class="tag-number">×2</span><br>
+        
+        	<a href="http://discuss.codechef.com/tags/treap/" class="tag-link-treap" title="see questions tagged&#39;treap&#39;using tags" rel="tag">treap</a> <span class="tag-number">×2</span><br>
+        
+    </p>
+    <p>
+        Asked: <strong title="Nov. 24, 2013, 2:50 p.m.">2 days ago</strong>
+    </p>
+    <p>
+     	Seen: <strong>247 times</strong>
+    </p>
+    <p>
+        Last updated: <strong title="Nov. 27, 2013, 2:36 p.m.">13 mins ago</strong>
+    </p>
+</div>
+
+
+
+
+
+<div class="boxC">
+    <h3 class="subtitle">Related questions</h3>
+    <div class="questions-related">
+
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/13633/spmatrix-editorial" title="Problem Link:PracticeContestDifficulty:HardPre-requisites:Math, CombinatoricsProblem:You are given N. Count how many NxN matrices are there, satisfying the following conditions:(a) M[x][x] = 0(b) M[x][y] = M[y][x] &amp;gt; 0(c) M[x][y] &amp;lt;= max(M[x][z], M[z][y])(d) M[x][y] (x!= y) is taken ">SPMATRIX - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/6377/clmbstrs-editorial" title="Problem Link:PracticeContestDifficulty:SimplePre-requisites:CombinatoricsProblem:Given a staircase of N stairs, in how many different ways can you reach the top, assuming you can climb one or two stairs at a time. Let this number of ways be M. Check if the number of 1-bits in (M modulo 10000">CLMBSTRS - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/26260/seatrsf-editorial" title="PROBLEM LINK:PracticeContestAuthor: Sergey Nagin Tester: Jingbo Shang Editorialist: Ajay K. VermaDIFFICULTY:EASYPREREQUISITES:High school maths, Inclusion-exclusion principle, Modular exponentiationPROBLEM:Given three integers N, M and Q, find the number of sequences of N elements, with e">SEATRSF - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/1968/maxgame-editorial" title="PROBLEM LINK:PracticeContestDIFFICULTY:MediumPREREQUISITES:Combinatorics, Recurrences, Catalan numbersPROBLEM:There are N points along a circle. We&#39;ve to draw non-intersecting chords onthese points. Special property to satisfy is that if there is a chord betweenpoints A and B, number of c">MAXGAME - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/10618/amrook-editorial" title="Problem Link:PracticeContestDifficulty:MediumPre-requisites:CombinatoricsProblem:You are given a RxC chess board, on which you have to place N rooks. The board is numbered 1 to R from top to bottom and 1 to C from left to right. Rooks can be placed in such a way that there are more than one ">AMROOK - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/21664/gridcol-editorial" title="Problem Link:PracticeContest author: Tasnim Imran Sunnytester: Roman Rubanenkoeditorialist: Utkarsh LathDifficulty:HardPre-requisites:inclusion-exclusion, dynamic-programming, combinatorics, bipartite-graphsProblem:Given 3 * N matrix, whose first two rows are filled with permutations of ">GRIDCOL-editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/23737/spoons-editorial" title="Problem Link:PracticeContestDifficulty:easy-mediumPre-requisites:Sperner&#39;s TheoremProblem:Given an integer N, find the size of smallest set S such that there exists an antichain of size N among the subsets of S.Explanation:The relation between groups of cities A and B served by two spoons ">SPOONS - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/30363/numbers-editorial" title="Problem Link:Practice ContestDifficulty:CakeWalkPre-requisites:SortingExplanation:Sub tasks 1, 2, 3:The constraints in these subtasks are designed in such a way that it is possible just to check every single person in O(N) time. Thisway, the solution will look like: for every player check ">NUMBERS - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/30376/qmarks-editorial" title="Problem Link:PracticeContestDifficulty:Easy-MediumPre-requisites:Aho-Corasick, DPExplanation:In order to pass the first sub task it&#39;s sufficient to implement exponential-time brute force solution. In order to go furthersome knowledge about Aho-Corasick algo will be required. A lot of articl">QMARKS - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/5146/threedif-editorial" title="PROBLEM LINK:PracticeContestAuthor: Anton LunyovTester: Hiroto SekidoEditorialist: Anton LunyovDIFFICULTY:SIMPLEPREREQUISITES:Rule of product in combinatorics, Modulo operationPROBLEM:You are given 3 positive integers N1, N2, N3 up to 1018 and need to count the number of triples (X1, X2, ">THREEDIF - Editorial</a>
+        </p>
+        
+
+    </div>
+</div>
+
+
+
+        </div>
+        <div id="tail" style="clear:both;">
+            
+            
+        </div>
+    </div>
+    <div class="spacer3"></div>
+</div>
+
+        
+            
+            <div id="ground">
+                
+                    <p>
+
+<link rel="stylesheet" type="text/css" href="./PALINDR - Editorial - CodeChef Discuss_files/cc.css">
+</p>
+<div id="cc-footer" class="cc-wrapper">
+    <div class="cc-inner-wrapper">
+        <!-- SECOND NAV -->
+        <div class="cc-cols-2">
+            <div id="cc-secondary-nav">
+                <ul>
+                    <!-- <li><a href="http://blog.corp.pw/" target="_blank">.pw Corp Blog</a></li>
+                    <li><a href="http://start.pw/" target="_blank">Vision</li> -->
+                    <li><a href="http://www.codechef.com/aboutus/">About CodeChef</a></li>
+                    <li><a href="http://www.directi.com/" target="_blank">About Directi</a></li>
+                    <li><a href="http://www.codechef.com/ceoscorner/">CEO's Corner</a></li>
+                    <!-- <li><a href="http://wiki.directi.com/" target="_blank">Wiki</a></li>
+                    <li><a href="http://wiki.directi.com/display/corp/Home" target="_blank">About</a></li> -->
+                </ul>
+                <ul>
+                    <li><a href="http://www.codechef.com/campus/">CodeChef Campus Chapters</a></li>
+                    <li><a href="http://www.codechef.com/school/">CodeChef For Schools</a></li>
+                    <li><a href="http://www.codechef.com/contactus">Contact Us</a></li>
+                </ul>
+            </div>
+            <div id="cc-fineprint">
+                <p>© 2009, Directi Group. All Rights Reserved.</p>
+                <p><small>Powered by OSQA<br> </small></p>
+            </div>
+        </div>
+        <!-- /SECOND NAV -->
+        <!-- LEGAL & COPYRIGHT -->
+        <div>
+            <div id="cc-sponsor-strip">
+                <a href="http://www.directi.com/" target="_blank"><img src="./PALINDR - Editorial - CodeChef Discuss_files/footer-sponsor-strip.gif" alt="Sponsors" title="Sponsors"></a>
+            </div>
+        </div>
+        <!-- /LEGAL & COPYRIGHT -->
+    </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./PALINDR - Editorial - CodeChef Discuss_files/ga.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-4090524-6");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+                
+            </div>
+            
+        
+        
+
+        
+        </div>
+
+        <!-- Put all elements with fixed position here, IE6 fixed position fix: http://ryanfait.com/position-fixed-ie6/ -->
+        <div class="notify" style="display:none">
+            
+                
+            
+            <a id="close-notify" onclick="notify.close(true)">×</a>
+        </div>
+
+    
+
+<!-- end template base_content.html -->
+</body><span id="skype_highlighting_settings" display="none" autoextractnumbers="1" hightlightingswitched="0"></span><object id="skype_plugin_object" location.href="http://discuss.codechef.com/questions/30371/palindr-editorial" location.hostname="discuss.codechef.com" width="0" height="0" type="application/x-vnd.skype.click2call.chrome.5.7.0" style="position: absolute; visibility: hidden; left: -100px; top: -100px;"></object></html>

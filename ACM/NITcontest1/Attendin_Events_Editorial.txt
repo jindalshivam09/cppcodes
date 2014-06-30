@@ -1,0 +1,16 @@
+Level:
+Easy-Medium
+
+Prequisite :
+DFS(Depth First Search) , Euler Path
+
+Problem Description :
+Basically you are given some strings and you need to tell whether there is combiation of strings is possible such that ith string is followed by a string whose first letter is last letter of the ith string.
+Suppose we have three strings : encoder , impact , rishti. Now the combination of the strings which satisfies the above mention condition is : encoder -> rishti -> impact :
+
+Solution :
+Simple visualisation of this problem is that consider the first and last character of each string as nodes of a graph  like in the above example the nodes are 'e' , 'r' , 'i' , 't'. Now what you need to do is 
+firstly check whether this graph is connected or not . If graph is not connected then no solution is possible.  Otherwise , check whether euler path of this graph is possible or not.
+For euler path refer to http://en.wikipedia.org/wiki/Eulerian_path and for dfs refer to  http://en.wikipedia.org/wiki/Depth-first_search.
+
+Tester's Solution:    http://www.hackerearth.com/nitcontest1/algorithm/attending-events-2/submission/160170/

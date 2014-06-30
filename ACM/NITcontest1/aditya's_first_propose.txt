@@ -1,0 +1,12 @@
+I have one year experience in android application development.
+I developed an app "World News" uses RSS feed and HTML Parsing to retrieve data from the Google News Database.
+Another android app "Top Tracks" uses XML Parsing and JSON concepts and displays recent top music tracks depending on the user's location.
+Recenty i developed "Textify The Call" app as team project.It converts the voice conversation over a call into text in REAL time.
+
+
+now, i want to make anroid OS by myself.. currently making a android tiny kernel as a project for ECXALLIBUR
+
+I am from MARS
+I SPENT 2 years with SJ (not allowed to sit for GOOGLE and INFOEDGE and MICROSOFT) !! yes !! i am alive ! and we tried a lot.. a lot.. alot.. a lot.. in nights.. sleepless nights.. and still.. dewet's aint satisfied !
+
+

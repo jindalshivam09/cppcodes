@@ -1,0 +1,138 @@
+#include <iostream>
+#include <cstdio>
+#include <string>
+using namespace std;
+
+const int maxn = 100333, md = 1000000000 + 7;
+
+struct item {
+        int prior, cnt, value[10], sum[10];
+        bool f;
+        item *l, *r;
+};
+typedef item * pitem;
+int n, m;
+string s;
+pitem t;
+item a[maxn];
+long long fact[maxn], inv[maxn];
+
+
+long long bin_pow(long long a, int b)
+{
+	if (b == 0) return 1;
+	if (b % 2 == 1) return (bin_pow(a, b - 1) * a) % md;
+	a =(a * a) % md;
+	return bin_pow(a, b / 2);
+}
+ 
+int cnt(pitem t) {
+        return t ? t->cnt : 0;
+}
+ 
+int sum(pitem t, int i) 
+{
+        return t ? t->sum[i] : 0;
+}
+ 
+void push(pitem t) 
+{
+        if (t) {
+                if (t->f && t->l) t->l->f ^= 1;
+                if (t->f && t->r) t->r->f ^= 1;
+                if (t->f) swap(t->l, t->r);
+                t->f = 0;
+                t->cnt = cnt(t->l) + cnt(t->r) + 1;
+		for (int i = 0; i < 10; i++)
+			t->sum[i] = t->value[i] + sum(t->l, i) + sum(t->r, i);
+        }
+}
+ 
+void split(pitem t, pitem &l, pitem &r, int key) {
+        push(t);
+        if (!t)
+                return void(l = r = 0);
+        if (key <= cnt(t->l))
+                split(t->l, l, t->l, key), r = t;
+        else
+                split(t->r, t->r, r, key - cnt(t->l) - 1), l = t;
+        push(l); push(r);
+}
+ 
+void merge(pitem &t, pitem l, pitem r) {
+        push(l); push(r);
+        if (!l || !r)
+                t = l ? l : r;
+        else if (l->prior > r->prior)
+                merge(l->r, l->r, r), t = l;
+        else
+                merge(r->l, l, r->l), t = r;
+        push(t);
+}
+
+int main(){
+	fact[0] = 1;
+	inv[0] = 1;
+	for (int i = 1; i < maxn; i++)
+	{
+		fact[i] = (fact[i - 1] * i) % md;
+		inv[i] = bin_pow(fact[i], md - 2);
+	}
+	scanf("%d%d", &n, &m);
+	cin>>s;
+	int i, j;
+	for (i = 0; i < n; i++)
+	{
+		a[i + 1].sum[s[i] - 'a'] = 1;
+		a[i + 1].value[s[i] - 'a'] = 1;
+		a[i + 1].prior = (rand() << 15) + rand();
+		merge(t, t, &a[i + 1]);
+	}
+	int cnt[10];
+	for (i = 1; i <= m; i++)
+	{
+		int tp, l, r;
+		scanf("%d%d%d", &tp, &l, &r);
+		l--;
+		r--;
+		if (tp == 1)
+		{
+			pitem t1, t2, t3;
+			split(t, t1, t2, l);
+			split(t2, t2, t3, r - l + 1);
+			t2->f ^= 1;
+			merge(t, t1, t2);
+			merge(t, t, t3);
+			continue;
+		}
+
+		int odd = 0;
+		pitem t1, t2, t3;
+		split(t, t1, t2, l);
+		split(t2, t2, t3, r - l + 1);
+		for (j = 0; j < 10; j++)
+		{
+			cnt[j] = sum(t2, j);
+			if (cnt[j] % 2 == 1) odd++;
+		}
+		merge(t, t1, t2);
+		merge(t, t, t3);
+		if (odd > 1){
+			printf("0\n");
+			continue;
+		}
+		for (j = 0; j < 10; j++)
+			if (cnt[j] % 2 == 1) cnt[j]--;
+		int w = 0;
+		for (j = 0; j < 10; j++)
+			w += (cnt[j] / 2);
+		long long ans = fact[w];
+//		for (j = 0; j < 3; j++)
+//			cout<<cnt[j]<<" ";
+//		cout<<endl;
+		for (j = 0; j < 10; j++)
+			ans = (ans * inv[cnt[j] / 2]) % md;
+		printf("%lld\n", ans);
+	}
+	
+}

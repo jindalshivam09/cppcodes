@@ -1,0 +1,716 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0060)http://discuss.codechef.com/questions/30376/qmarks-editorial -->
+<html xmlns="http://www.w3.org/1999/xhtml" class=" clickberry-extension clickberry-extension-standalone"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>QMARKS - Editorial - CodeChef Discuss</title>
+        <meta name="description" content="Problem Link:PracticeContestDifficulty:Easy-MediumPre-requisites:Aho-Corasick, DPExplanation:In order to pass the first sub task it&#39;s sufficient to implement exponential-time brute force solution. In order to go furthersome knowledge about Aho-Corasick algo will be required. A lot of articl">
+        <meta name="keywords" content="aho-corasick,qmarks,editorial,ltime06">
+        
+        <link rel="canonical" href="./QMARKS - Editorial - CodeChef Discuss_files/QMARKS - Editorial - CodeChef Discuss.htm">
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="http://discuss.codechef.com/questions/30376/qmarks-editorial?type=rss">
+
+        
+        
+        <link rel="shortcut icon" href="http://discuss.codechef.com/upfiles/favicon_1.ico">
+        <link href="./QMARKS - Editorial - CodeChef Discuss_files/style.css" rel="stylesheet" type="text/css">
+        
+        <link href="./QMARKS - Editorial - CodeChef Discuss_files/custom.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="./QMARKS - Editorial - CodeChef Discuss_files/jquery-ui.css">
+        <!--[if IE 6]>
+        <style type="text/css">
+        img, div, a { behavior: url(/m/default/media/iepngfix/iepngfix.htc) }
+        </style>
+        <![endif]-->
+        
+
+        <script src="./QMARKS - Editorial - CodeChef Discuss_files/jsapi" type="text/javascript"></script><style type="text/css"></style>
+        <script type="text/javascript">
+        /*<![CDATA[*/
+            google.load("jquery", "1.4.2");
+            google.load("jqueryui", "1", {autoload:true});
+
+            var i18nLang = 'en';
+            var appUrl = 'http://discuss.codechef.com'
+            var scriptUrl = '/'
+            var osqaSkin = 'default';
+
+            var messages = {
+                username: 'jindalshivam09',
+                confirm: "Are you sure?",
+                yes: "Yes",
+                no: "No",
+                message: "Message:",
+                cancel: "Cancel",
+                close: "Close",
+                ok: "Ok",
+                matching_tags_url: "/matching_tags/",
+                word: "word",
+                words: "words",
+                character: "character",
+                characters: "characters"
+            }
+        /*]]>*/
+        </script><script src="./QMARKS - Editorial - CodeChef Discuss_files/jquery.min.js" type="text/javascript"></script><script src="./QMARKS - Editorial - CodeChef Discuss_files/jquery-ui.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="./QMARKS - Editorial - CodeChef Discuss_files/osqa.main.js"></script>
+        
+        
+        
+        
+        
+        <script type="text/javascript" src="./QMARKS - Editorial - CodeChef Discuss_files/osqa.question.js"></script>
+        <script type="text/javascript" src="./QMARKS - Editorial - CodeChef Discuss_files/jquery.caret.js"></script>
+        <script type="text/javascript" src="./QMARKS - Editorial - CodeChef Discuss_files/showdown.js"></script>
+        <script type="text/javascript" src="./QMARKS - Editorial - CodeChef Discuss_files/wmd.js"></script>
+        <link rel="stylesheet" type="text/css" href="./QMARKS - Editorial - CodeChef Discuss_files/wmd.css">
+
+        
+        <script type="text/javascript" src="./QMARKS - Editorial - CodeChef Discuss_files/viewbox_min.js"></script>
+        <script type="text/javascript" src="./QMARKS - Editorial - CodeChef Discuss_files/youtube.js"></script>
+        <link rel="stylesheet" type="text/css" href="./QMARKS - Editorial - CodeChef Discuss_files/viewbox.css">
+        
+        
+
+        <script type="text/javascript">
+        $().ready(function(){
+            $("#nav_questions").attr('className',"on");
+            var answer_sort_tab = "";
+
+            if (answer_sort_tab) {
+                $("#" + answer_sort_tab).attr('className',"on");
+            }
+
+            $('#editor').TextAreaResizer();
+
+            //toggle preview of editor
+            var display = true;
+            var txt = "[hide preview]";
+            $('#pre-collapse').text(txt);
+            $('#pre-collapse').bind('click', function(){
+                txt = display ? "[show preview]" : "[hide preview]";
+                display = !display;
+                $('#previewer').toggle();
+                $('#pre-collapse').text(txt);
+            });
+        });
+
+        function submitClicked(e, f) {
+            if(!(browserTester('chrome') || browserTester('safari'))) {
+                $("input.submit")[0].disabled=true;
+            }
+            window.removeEventListener('beforeunload', beforeUnload, true);
+            if (f) {
+                f.submit();
+            }
+        }
+
+        function beforeUnload(e) {
+
+            if($("textarea#editor")[0].value != "") {
+                return yourWorkWillBeLost(e);
+            }
+
+            var commentBoxes = $("textarea.commentBox");
+            for(var index = 0; index < commentBoxes.length; index++) {
+                if(commentBoxes[index].value != "") {
+                    return yourWorkWillBeLost(e);
+                }
+            }
+        }
+        window.addEventListener('beforeunload', beforeUnload, true);
+        </script>
+        <noscript>
+            &lt;style&gt;
+                .comment.not_top_scorer {
+                    display: block;
+                }
+                .comment-form-container {
+                    display: block;
+                }
+                .div.comment-tools {
+                    display: none;
+                }
+            &lt;/style&gt;
+        </noscript>
+
+        <link rel="search" type="application/opensearchdescription+xml" href="http://discuss.codechef.com/opensearch.xml" title="CodeChef Discuss Search">
+        
+    <meta content="clickberry-extension-here"><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/document_iterator.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/find_proxy.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/get_html_text.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/global_constants.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/name_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/number_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/menu_injection_builder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/string_finder.js"></script><script src="chrome-extension://lifbcibllhkdhoafpjfnlhfpfgnpldfl/change_sink.js"></script><meta name="document_iterator.js"><meta name="find_proxy.js"><meta name="get_html_text.js"><meta name="name_injection_builder.js"><meta name="number_injection_builder.js"><meta name="menu_injection_builder.js"><meta name="global_constants.js"><meta name="string_finder.js"><meta name="change_sink.js"></head>
+    <body>
+        <div class="wrapper">
+        
+        <!-- template header.html -->
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        initSearchBoxValue();
+    })
+
+
+    function initSearchBoxValue()
+    {
+        var searchKeyword= $("#keywords").val();
+            if (searchKeyword=="")
+            {
+                $("#keywords").val("Search Here...");
+            }
+   }
+
+    function searchBoxOnBlur(){
+        $("#keyword").className="searchInput";
+        if ($("#keywords").val()=="")
+                $("#keywords").val("Search Here...");
+    }
+
+    function searchBoxOnFocus(){
+        $("#keyword").className="searchInputFocused";
+        if ($("#keywords").val()=="Search Here...")
+            $("#keywords").val("");
+   }
+
+    function about(){
+        if (document.URL=="http://osqa.codechef.local/about/")
+        {
+            $("")
+        }
+    }
+
+</script>
+
+
+
+ 
+
+	<div id="roof">
+
+
+
+		<div id="logo">
+			<a href="http://discuss.codechef.com/">
+				<img src="./QMARKS - Editorial - CodeChef Discuss_files/site-logo_2.png" title="back to home page" alt="CodeChef Discuss logo">
+			</a>
+		</div>
+	  
+		<div id="top">
+		     <a href="http://discuss.codechef.com/users/11797/jindalshivam09">jindalshivam09</a> <span class="score" title="36 karma">36</span><span title="1 badges"><span class="silver">●</span><span class="badgecount">1</span></span><span title="4 badges"><span class="bronze">●</span><span class="badgecount">4</span></span> <a href="http://discuss.codechef.com/logout/">Log Out</a> 
+
+            <div id="nav">
+                <a id="nav_questions" class="on" href="http://discuss.codechef.com/questions/">questions</a><a id="nav_tags" href="http://discuss.codechef.com/tags/">tags</a><a id="nav_users" href="http://discuss.codechef.com/users/">users</a><a id="nav_badges" href="http://discuss.codechef.com/badges/">badges</a><a id="nav_unanswered" href="http://discuss.codechef.com/questions/unanswered/">unanswered</a>
+                <a id="horiSeparator">
+                </a><a id="nav_ask" href="http://discuss.codechef.com/questions/ask/" class="special">ask a question</a>
+                <a id="nav_about" href="http://discuss.codechef.com/about" class="off" onclick="about()">about</a>
+                <a id="nav_faq" href="http://discuss.codechef.com/faq">faq</a>
+
+            </div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <div class="clear"></div>
+	<div id="searchBar">
+
+
+
+
+        <table id="searchBarTable">
+            <tbody><tr>
+                <td class="left">
+                    CodeChef Discussion
+                </td>
+                <td class="right">
+                    <form action="http://discuss.codechef.com/search/" method="get">
+                    <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="634dbe74fe897b0faaf08de7ec2675f4"></div>
+                        <table>
+                            <tbody><tr>
+                                <td>
+                                    <input type="text" class="searchInput" value="" name="q" id="keywords" onfocus="searchBoxOnFocus()" onblur="searchBoxOnBlur()">
+                                </td>
+                                <td>
+                                    <div class="options">
+                                        <input id="type-question" type="radio" value="question" name="t" checked="checked"><label for="type-question">questions</label>
+                                        <input id="type-tag" type="radio" value="tag" name="t"><label for="type-tag">tags</label>
+                                        <input id="type-user" type="radio" value="user" name="t"><label for="type-user">users</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </form>
+                </td>
+            </tr>
+        </tbody></table>
+        <h1 id="separator">
+        </h1>
+	</div>
+
+
+	
+
+<!-- end template header.html -->
+
+        
+
+
+
+<div id="wrapper">
+    
+    
+    <div id="room">
+        <div id="CALeft">
+            
+<div class="headNormal">
+    <h1>QMARKS - Editorial</h1>
+</div>
+<div id="main-body" class="">
+    <div id="askform">
+            <table style="width:100%;" id="question-table">
+                <tbody><tr>
+                    <td style="width:30px;vertical-align:top">
+                        <div class="vote-buttons">
+                            
+
+<a id="post-30376-upvote" title="I like this post (click again to cancel)" class="ajax-command post-vote up " href="http://discuss.codechef.com/vote/30376/up/" rel="nofollow"> </a>
+<div id="post-30376-score" class="post-score" title="current number of votes">
+    0
+</div>
+<a id="post-30376-downvote" title="I dont like this post (click again to cancel)" class="ajax-command post-vote down" href="http://discuss.codechef.com/vote/30376/down/" rel="nofollow"> </a>
+                            
+
+<a id="favorite-mark" title="mark/unmark this question as favorite (click again to cancel)" class="ajax-command favorite-mark " href="http://discuss.codechef.com/mark_favorite/30376/" rel="nofollow"> </a>
+<div id="favorite-count" class="favorite-count">
+   
+</div>
+
+                        </div>
+                    </td>
+                    <td>
+                        <div id="item-right">
+                            <div class="question-body">
+                                <h1>Problem Link:</h1>
+<p><a href="http://www.codechef.com/problems/QMARKS">Practice</a><br>
+<a href="http://www.codechef.com/LTIME06/problems/QMARKS">Contest</a></p>
+<h1>Difficulty:</h1>
+<p>Easy-Medium</p>
+<h1>Pre-requisites:</h1>
+<p>Aho-Corasick, DP</p>
+<h1>Explanation:</h1>
+<p>In order to pass the first sub task it's sufficient to implement exponential-time brute force solution. In order to go further
+some knowledge about Aho-Corasick algo will be required. A lot of articles on Aho-Corasick can be found on the net.</p>
+<p>Let's solve the inverse problem first. Consider that you have a set of strings <strong>D</strong> and a string <strong>T</strong> and now it's required to calculate
+the total number of occurences of all the strings from <strong>D</strong> in <strong>S</strong>. This problem is a standard for Aho-Corasick algo. The standard
+solution builds a trie from the set of strings <strong>D</strong> with O(total length of all the strings from <strong>D</strong>) nodes. Then, suffix links are calculated and
+with the usage of suffix links it's possible to calculate the number of strings that end in every node of a trie and in every it's suffix.
+The next step is turning a trie in the automaton with O(states*alphabet) transitions. After this, you will have an automaton on which you
+can make <strong>N</strong> steps in order to calculate the number of occurences all the required substrings. This is the brief description of the inverse
+problem solution. More detailed description can be found in almost any Aho-Corasick tutorial, because this "inverse" problem is actually a
+well known one.</p>
+<p>Now, how to solve the original problem. There is a DP soltuion. As it was mentioned before, there'll be O(total length of strings from <strong>D</strong>) 
+states in the automaton. So it's possible to have a DP state of the form (number of letters already processed, current position in the automaton).
+The transition then is quite straightforward: if the current symbol is a question mark, then you can have 26 possible choices. Otherwise, 
+the choice is unique - you can not use all the symbols but the current one. This way you can get the maximal number of occurences.</p>
+<p>In order to restore the string itself, you can act greedily. You can iterate through the symbols of the string <strong>S</strong>, starting from the first one.
+If the current character is a letter, then there's only one choice. Otherwise, you can iterate through all the possible characters, namely
+'a' to 'z' and choose the transition to the state with the maximal DP value in it (if there are several such transitions, you can choose the
+one with the minimal character). It becomes possible if your DP state is (the size of the
+current suffix, the position in the automaton), because adding a symbol is just a transition from one suffix to another, smaller one and in
+this case, the DP will contain all the necessary information about the remaining part of the string.</p>
+<h1>Setter's Solution:</h1>
+<p>Can be found <a href="http://www.codechef.com/download/Solutions/LTIME06/Setter/QMARK.cpp">here</a></p>
+<h1>Tester's Solution:</h1>
+<p>Can be found <a href="http://www.codechef.com/download/Solutions/LTIME06/Tester/QMARKS.cpp">here</a></p>
+                            </div>
+                            <div id="question-tags" class="tags-container tags">
+                                
+                                    <a href="http://discuss.codechef.com/tags/aho-corasick/" class="post-tag tag-link-aho-corasick" title="see questions tagged &#39;aho-corasick&#39;" rel="tag">aho-corasick</a>
+                                
+                                    <a href="http://discuss.codechef.com/tags/qmarks/" class="post-tag tag-link-qmarks" title="see questions tagged &#39;qmarks&#39;" rel="tag">qmarks</a>
+                                
+                                    <a href="http://discuss.codechef.com/tags/editorial/" class="post-tag tag-link-editorial" title="see questions tagged &#39;editorial&#39;" rel="tag">editorial</a>
+                                
+                                    <a href="http://discuss.codechef.com/tags/ltime06/" class="post-tag tag-link-ltime06" title="see questions tagged &#39;ltime06&#39;" rel="tag">ltime06</a>
+                                
+                            </div>
+                            <div id="question-controls" class="post-controls">
+                                
+<span class="action-link"><a rel="nofollow" title="report as offensive (i.e containing spam, advertising, malicious text, etc.)" class="ajax-command withprompt  " href="http://discuss.codechef.com/flag/30376/">report (0)</a></span>
+                                
+
+                            </div>
+                            <div class="post-update-info-container">
+                                    
+<div class="post-update-info post-update-info-user">
+    <p style="line-height:12px;">
+        asked
+        <strong>2 days ago</strong>
+    </p>
+    <img class="gravatar" width="32" height="32" src="./QMARKS - Editorial - CodeChef Discuss_files/4d2e2cb3a637b8923ab5bdb95e54b08e.jpg" alt="xcwgf666&#39;s gravatar image">
+    <p><a href="http://discuss.codechef.com/users/10879/xcwgf666">xcwgf666 ♦♦</a><br>
+    <span class="score" title="196 karma">196</span><span title="5 badges"><span class="badge1">●</span><span class="badgecount">5</span></span><span title="12 badges"><span class="silver">●</span><span class="badgecount">12</span></span><span title="15 badges"><span class="bronze">●</span><span class="badgecount">15</span></span><br>
+    
+    <span title="Rate of the user&#39;s accepted answers" class="accept_rate">accept rate:</span>
+    <span title="xcwgf666 has no accepted answers">0%</span>
+    </p>
+</div>
+
+    <div class="post-update-info post-update-info-edited">
+        <p style="line-height:12px;">
+            <a href="http://discuss.codechef.com/revisions/30376/">
+                edited
+                <strong>2 days ago</strong>
+            </a>
+        </p>
+        
+    </div>
+
+
+                            </div>
+                            
+
+
+<div class="comments-container" id="comments-container-30376">
+    
+</div>
+<div id="comment-tools-30376" class="comment-tools">
+    
+    
+        <a href="http://discuss.codechef.com/questions/30376/qmarks-editorial#" class="add-comment-link">add new comment</a>
+    
+</div>
+<div id="comment-30376-form-container" class="comment-form-container">
+    
+    <form id="comment-30376-form" method="post" action="http://discuss.codechef.com/comment/30376/" accept-charset="utf-8"><div style="display:none;"><input type="hidden" id="csrfmiddlewaretoken" name="csrfmiddlewaretoken" value="634dbe74fe897b0faaf08de7ec2675f4"></div>
+        <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="634dbe74fe897b0faaf08de7ec2675f4"></div>
+        <div class="comment-form-widgets-container">
+            <textarea name="comment" class="commentBox" id="comment" style="padding-top: 0px; padding-bottom: 0px; resize: none; overflow: hidden; height: 80px;"></textarea>
+            <div class="comment-form-buttons">
+                <span id="comment-30376-chars-left" class="comment-chars-left">
+                    <span class="comments-char-left-count">10</span>
+                    <span class="comments-chars-togo-msg">characters needed</span>
+                    <span class="comments-chars-left-msg" style="display: none;">characters left</span>
+                </span>
+                <input type="submit" class="comment-submit" value=" comment" disabled="">
+                <input type="submit" class="comment-cancel" value=" cancel">
+            </div>
+            <div class="clear"></div>
+            
+        </div>
+        <script type="text/html" class="new-comment-skeleton" id="new-comment-skeleton-30376">
+            <div class="comment not_top_scorer" id="comment-%ID%">
+                <div id="post-%ID%-score" class="comment-score"></div>
+                <div class="comment-text">%COMMENT%</div>
+                <div class="comment-info" id="comment-%ID%-info">
+                    <a id="comment-%ID%-edit" href="%EDIT_URL%" title="Edit comment"
+                        class="comment-edit" rel="nofollow"> </a>
+                    <a id="comment-%ID%-delete" href="%DELETE_URL%" title="Delete comment"
+                        class="ajax-command comment-delete confirm" rel="nofollow"> </a>
+                    <a rel="nofollow" id="comment-%ID%-convert" style="display:none;" href="%CONVERT_URL%" title="Convert comment to answer"
+                        class="ajax-command comment-convert confirm" rel="nofollow"> </a>
+
+                    <span class="comment-age">(just now)</span>
+                    <a class="comment-user" href="%PROFILE_URL%">%USERNAME%</a>
+                    
+                        
+                    
+                </div>
+             </div>
+        </script>
+    </form>
+    
+</div>
+    
+
+                        </div>
+
+                    </td>
+                </tr>
+            </tbody></table>
+            
+            
+        <form id="fmanswer" action="http://discuss.codechef.com/questions/30376/answer/" method="post"><div style="display:none;"><input type="hidden" name="csrfmiddlewaretoken" value="634dbe74fe897b0faaf08de7ec2675f4"></div>
+            <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="634dbe74fe897b0faaf08de7ec2675f4"></div>
+            <div style="clear:both">
+            </div>
+
+            
+                <div style="padding:10px 0 0 0;">
+                    <div class="headNormal">
+                        
+                            Be the first one to answer this question!
+                        
+                    </div>
+                </div>
+                
+
+                <div id="description" class="">
+                    <div id="wmd-button-bar" class="wmd-panel"><ul id="wmd-button-row"><li class="wmd-button" id="wmd-bold-button" title="Strong &lt;strong&gt; Ctrl+B" style="background-position: 0px 0px;"></li><li class="wmd-button" id="wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I" style="background-position: -20px 0px;"></li><li class="wmd-spacer" id="wmd-spacer1"></li><li class="wmd-button" id="wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L" style="background-position: -40px 0px;"></li><li class="wmd-button" id="wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q" style="background-position: -60px 0px;"></li><li class="wmd-button" id="wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K" style="background-position: -80px 0px;"></li><li class="wmd-button" id="wmd-image-button" title="Image &lt;img&gt; Ctrl+G" style="background-position: -100px 0px;"></li><li class="wmd-spacer" id="wmd-spacer2"></li><li class="wmd-button" id="wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O" style="background-position: -120px 0px;"></li><li class="wmd-button" id="wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U" style="background-position: -140px 0px;"></li><li class="wmd-button" id="wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H" style="background-position: -160px 0px;"></li><li class="wmd-button" id="wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R" style="background-position: -180px 0px;"></li><li class="wmd-spacer" id="wmd-spacer3"></li><li class="wmd-button" id="wmd-undo-button" title="Undo - Ctrl+Z" style="background-position: -200px -20px;"></li><li class="wmd-button" id="wmd-redo-button" title="Redo - Ctrl+Y" style="background-position: -220px -20px;"></li><li class="wmd-button" id="wmd-help-button" style="background-position: -240px 0px;"><a href="http://wmd-editor.com/" target="_blank" title="WMD website"></a></li></ul></div>
+                    <div class="resizable-textarea"><span><textarea rows="10" cols="40" name="text" id="editor" class="processed"></textarea><div class="grippie" style="margin-right: -6px;"></div></span></div>
+                    <div class="preview-toggle">
+                        <table width="100%">
+                            <tbody><tr>
+                                <td>
+                                    <span id="pre-collapse" title="Toggle the real time Markdown editor preview">[hide preview]</span>
+                                </td>
+                                <td style="text-align: right;" id="editor-metrics"></td>
+                                
+                                <td style="text-align:right;">
+                                    <input type="checkbox" name="wiki" id="id_wiki">
+                                    <span style="font-weight:normal;cursor:help" title="if you choose community wiki option, the question and answer do not generate points and name of author will not be shown">
+                                            <label for="id_wiki">community wiki</label> 
+                                    </span>
+                                </td>
+                                
+                            </tr>
+
+                        </tbody></table>
+                    </div>
+                    
+                    <div id="previewer" class="wmd-preview"></div>
+                </div>
+
+	            
+
+                <p><span class="form-error"></span></p>
+                
+                <input type="button" value="Post Your Answer" class="submit" style="float:left" onclick="submitClicked(event, this.form)">
+            
+        </form>
+    </div>
+</div>
+
+
+        </div>
+        <div id="CARight">
+            
+<div class="boxC" id="subscription_box">
+    <h3 class="subtitle">Follow this question</h3><strong>By Email:</strong><div class="subscription-status"><p>You are not subscribed to this question.</p></div><p><a class="ajax-command sidebar_button subscription_switch" href="http://discuss.codechef.com/subscribe/30376/">
+        
+            subscribe me
+        
+    </a></p><p>
+        
+            (you can adjust your notification settings on your <a href="http://discuss.codechef.com/users/11797/jindalshivam09/subscriptions/">profile</a>)
+        
+    </p><strong>By RSS:</strong><p><a class="feed-icon" style="background-image:url(&#39;/m/default/media/images/feed-icon-small.png&#39;);" href="http://discuss.codechef.com/questions/30376/qmarks-editorial?type=rss" title="subscribe to answers"></a>
+    Answers
+</p><p><a class="feed-icon" style="background-image:url(&#39;/m/default/media/images/feed-icon-small.png&#39;);" href="http://discuss.codechef.com/questions/30376/qmarks-editorial?type=rss&comments=yes" title="subscribe to comments and answers"></a>
+    Answers and Comments
+</p>
+
+</div>
+
+
+<div class="boxC" id="editor_side_bar" style="display: none;">
+    <p class="subtitle darkred">Markdown Basics</p>
+    <ul class="list-item">
+        <li>
+            *italic* or _italic_
+        </li>
+        <li>
+			**bold** or __bold__
+        </li>
+        <li>
+            <b>link</b>:[text](http://url.com/ "title")
+
+        </li>
+
+        <li>
+            <b>image</b>?![alt text](/path/img.jpg "title")
+
+        </li>
+        <li>
+			numbered list:
+            1.  Foo
+            2.  Bar
+        </li>
+        <li>
+			to add a line break simply add two spaces to where you would like the new line to be.
+        </li>
+        <li>
+			basic HTML tags are also supported
+        </li>
+    </ul>
+    <p class="info-box-follow-up-links">
+        <a href="http://discuss.codechef.com/markdown_help/" target="_blank">learn more about Markdown </a>
+    </p>
+</div>
+
+
+
+
+
+
+
+
+<div class="boxC">
+    <p>
+		Tags:
+    </p>
+    <p class="tags">
+        
+        	<a href="http://discuss.codechef.com/tags/editorial/" class="tag-link-editorial" title="see questions tagged&#39;editorial&#39;using tags" rel="tag">editorial</a> <span class="tag-number">×607</span><br>
+        
+        	<a href="http://discuss.codechef.com/tags/aho-corasick/" class="tag-link-aho-corasick" title="see questions tagged&#39;aho-corasick&#39;using tags" rel="tag">aho-corasick</a> <span class="tag-number">×5</span><br>
+        
+        	<a href="http://discuss.codechef.com/tags/ltime06/" class="tag-link-ltime06" title="see questions tagged&#39;ltime06&#39;using tags" rel="tag">ltime06</a> <span class="tag-number">×4</span><br>
+        
+        	<a href="http://discuss.codechef.com/tags/qmarks/" class="tag-link-qmarks" title="see questions tagged&#39;qmarks&#39;using tags" rel="tag">qmarks</a> <span class="tag-number">×1</span><br>
+        
+    </p>
+    <p>
+        Asked: <strong title="Nov. 24, 2013, 2:56 p.m.">2 days ago</strong>
+    </p>
+    <p>
+     	Seen: <strong>124 times</strong>
+    </p>
+    <p>
+        Last updated: <strong title="Nov. 24, 2013, 3:34 p.m.">2 days ago</strong>
+    </p>
+</div>
+
+
+
+
+
+<div class="boxC">
+    <h3 class="subtitle">Related questions</h3>
+    <div class="questions-related">
+
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/1583/favnum-editorial" title="PROBLEM LINKS:PracticeContestDIFFICULTY:MediumPREREQUISITES:Binary Search, DP, Aho-Corasick/KMPPROBLEM:You&#39;re given some digit strings of length &amp;lt;= 18. A number is said to be lucky if its decimal representation contains at least 1 of these digit strings as substrings. Your task is to find">FAVNUM - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/20343/lyrc-editorial" title="PROBLEM LINKSPracticeContestDIFFICULTYMEDIUMPREREQUISITESString Matching, Aho-Corasick, Dynamic ProgrammingPROBLEMYou are given a dictionary D, of W words.You are given a set of N strings, S, to search for the frequency of occurance of the W words.EXPLANATIONThis is a classical problem in">LYRC - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/30363/numbers-editorial" title="Problem Link:Practice ContestDifficulty:CakeWalkPre-requisites:SortingExplanation:Sub tasks 1, 2, 3:The constraints in these subtasks are designed in such a way that it is possible just to check every single person in O(N) time. Thisway, the solution will look like: for every player check ">NUMBERS - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/30371/palindr-editorial" title="Problem Link:PracticeContestDifficulty:Easy-MediumPre-requisites:Treap, CombinatoricsExplanation:The constraints in the first sub task are very small, so a simple brute force will be enough in order to get a nonzero score atthis problem. In general case, let&#39;s consider the following proble">PALINDR - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/30367/lma1-editorial" title="Problem Link:Practice ContestDifficulty:EasyPre-requisites:Basic mathExplanation:Sub task 1:In this subtask the summands will decrease very fast because a is actually small, so it&#39;s enough just to calculate the sumfor all n smaller of equal to 100 and this should be enough.All the sub tas">LMA1 - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/4262/tolls-editorial" title="PROBLEM LINKSPracticeContestDIFFICULTYCHALLENGEEXPLANATIONApproach Taken:Determining the optimal solution is NP-hard so one has to resort to heuristics to solve the problem. The reduction showing NP-hardness is not obvious; [1] shows weak NP-hardness and [2] improves this to strong NP-hardnes">TOLLS - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/4279/fire-editorial" title="PROBLEM LINKSPracticeContestDIFFICULTYEASYEXPLANATIONConsider the following acyclic graph. The nodes are the bushes and two are adjacent if they are close enough to spread fire to each other. Consider the component with the bush that caught on fire first and think of this as a tree rooted at ">FIRE - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/4716/muffins3-editorial" title="Problem LinkPracticeContestDifficulty:CAKEWALKPre-requirements:Simple ArithmeticProblem:Chef has N cupcakes, which he wishes to package. He makes as many packages of a fixed size as possible from the N cupcakes. After he has made these packages, he eats the remaining. Find what size of packa">MUFFINS3 - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/1750/cielball-editorial" title="PROBLEM LINKPracticeContestDIFFICULTYHARDPREREQUISITESBinary search, Dynamic Programming, Breadth-first searchPROBLEMTomya and Ciel play a game. There is a box with balls of different colors. There are Si balls of color i in the box (i = 1, 2, ..., N). Tomya has initially M coins. At each mo">CIELBALL - Editorial</a>
+        </p>
+        
+        <p>
+            <a href="http://discuss.codechef.com/questions/1119/cakedoom-editorial" title="PROBLEM LINK:PracticeContestDIFFICULTY:SIMPLEPREREQUISITES:Greedy AlgorithmsPROBLEM:The problem requires you to output the lexicographically smallest possibility from the given “partial” arrangement which adheres to the constraints given. For details for QUICK EXPLANATION:For K=1 re">CAKEDOOM - Editorial</a>
+        </p>
+        
+
+    </div>
+</div>
+
+
+
+        </div>
+        <div id="tail" style="clear:both;">
+            
+            
+        </div>
+    </div>
+    <div class="spacer3"></div>
+</div>
+
+        
+            
+            <div id="ground">
+                
+                    <p>
+
+<link rel="stylesheet" type="text/css" href="./QMARKS - Editorial - CodeChef Discuss_files/cc.css">
+</p>
+<div id="cc-footer" class="cc-wrapper">
+    <div class="cc-inner-wrapper">
+        <!-- SECOND NAV -->
+        <div class="cc-cols-2">
+            <div id="cc-secondary-nav">
+                <ul>
+                    <!-- <li><a href="http://blog.corp.pw/" target="_blank">.pw Corp Blog</a></li>
+                    <li><a href="http://start.pw/" target="_blank">Vision</li> -->
+                    <li><a href="http://www.codechef.com/aboutus/">About CodeChef</a></li>
+                    <li><a href="http://www.directi.com/" target="_blank">About Directi</a></li>
+                    <li><a href="http://www.codechef.com/ceoscorner/">CEO's Corner</a></li>
+                    <!-- <li><a href="http://wiki.directi.com/" target="_blank">Wiki</a></li>
+                    <li><a href="http://wiki.directi.com/display/corp/Home" target="_blank">About</a></li> -->
+                </ul>
+                <ul>
+                    <li><a href="http://www.codechef.com/campus/">CodeChef Campus Chapters</a></li>
+                    <li><a href="http://www.codechef.com/school/">CodeChef For Schools</a></li>
+                    <li><a href="http://www.codechef.com/contactus">Contact Us</a></li>
+                </ul>
+            </div>
+            <div id="cc-fineprint">
+                <p>© 2009, Directi Group. All Rights Reserved.</p>
+                <p><small>Powered by OSQA<br> </small></p>
+            </div>
+        </div>
+        <!-- /SECOND NAV -->
+        <!-- LEGAL & COPYRIGHT -->
+        <div>
+            <div id="cc-sponsor-strip">
+                <a href="http://www.directi.com/" target="_blank"><img src="./QMARKS - Editorial - CodeChef Discuss_files/footer-sponsor-strip.gif" alt="Sponsors" title="Sponsors"></a>
+            </div>
+        </div>
+        <!-- /LEGAL & COPYRIGHT -->
+    </div>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./QMARKS - Editorial - CodeChef Discuss_files/ga.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-4090524-6");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+                
+            </div>
+            
+        
+        
+
+        
+        </div>
+
+        <!-- Put all elements with fixed position here, IE6 fixed position fix: http://ryanfait.com/position-fixed-ie6/ -->
+        <div class="notify" style="display:none">
+            
+                
+            
+            <a id="close-notify" onclick="notify.close(true)">×</a>
+        </div>
+
+    
+
+<!-- end template base_content.html -->
+</body><span id="skype_highlighting_settings" display="none" autoextractnumbers="1" hightlightingswitched="0"></span><object id="skype_plugin_object" location.href="http://discuss.codechef.com/questions/30376/qmarks-editorial" location.hostname="discuss.codechef.com" width="0" height="0" type="application/x-vnd.skype.click2call.chrome.5.7.0" style="position: absolute; visibility: hidden; left: -100px; top: -100px;"></object></html>
