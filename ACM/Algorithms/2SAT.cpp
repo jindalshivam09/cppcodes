@@ -41,6 +41,7 @@ typedef vector<pair<double,double> > vpdd;
 #define WHITE 0
 #define GRAY 1
 #define BLACK 2
+
 vector<vi> clauses;
 int n,m;
 int cc[MAX];

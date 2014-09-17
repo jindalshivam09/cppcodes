@@ -60,12 +60,12 @@ void suffix_array (const string &str) {
 										 suffixes[i-1].second == suffixes[i].second ? pos[steps][suffixes[i-1].id] : i ;
 		}
 	}
-/*	rep(j,steps) {
+	rep(j,steps) {
 		rep(i,str.size())
 			cout << pos[j][i] << " ";
 		cout << endl;
 	}
-*/
+
 }
 
 int lcp (int x,int y) {
