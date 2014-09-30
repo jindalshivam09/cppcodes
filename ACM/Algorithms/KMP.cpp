@@ -62,7 +62,6 @@ void kmp ( const string &text , const string &pattern ) {
 	int i=0,j=0;
 	
 	while ( i < t ) {
-		
 		if ( pattern[j] == text[i] ) {
 			
 			i++;
@@ -77,6 +76,7 @@ void kmp ( const string &text , const string &pattern ) {
 		}
 		if ( j == p ) {
 			occurences.push_back( i-j );
+			j = prefix[j-1] ;
 		}
 	}
 //	return -1;
@@ -84,9 +84,10 @@ void kmp ( const string &text , const string &pattern ) {
 
 int main() {
 	int t ;
-	while(cin >> t) {
+	cin >> t ;
+	while(t--) {
 		string text , pattern;
-		pattern.reserve(t+1) ;
+//		pattern.reserve(t+1) ;
 		cin >>  pattern >> text;
 		kmp(text,pattern);
 		for(int i=0;i<occurences.size();i++)

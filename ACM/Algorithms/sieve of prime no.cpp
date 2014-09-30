@@ -2,7 +2,7 @@
 #include<cmath>
 #include<cstring>
 #include<vector>
-#define MAX 100000
+#define MAX 1000009
 using namespace std;
 
 
@@ -25,6 +25,7 @@ void sieve(int n) {
 	for(int i=3;i<=n;i+=2)
 	if(!isPrime[i])
 		prime[j++] = i;
+	cout << j << endl;
 }
 
 main()

@@ -1,97 +1,300 @@
-Case #1: ((()()))
-Case #2: Doesn't Exist!
-Case #3: (())(()((()()())()))
-Case #4: Doesn't Exist!
-Case #5: Doesn't Exist!
-Case #6: Doesn't Exist!
-Case #7: Doesn't Exist!
-Case #8: Doesn't Exist!
-Case #9: Doesn't Exist!
-Case #10: Doesn't Exist!
-Case #11: Doesn't Exist!
-Case #12: Doesn't Exist!
-Case #13: Doesn't Exist!
-Case #14: Doesn't Exist!
-Case #15: Doesn't Exist!
-Case #16: Doesn't Exist!
-Case #17: Doesn't Exist!
-Case #18: Doesn't Exist!
-Case #19: Doesn't Exist!
-Case #20: Doesn't Exist!
-Case #21: Doesn't Exist!
-Case #22: Doesn't Exist!
-Case #23: Doesn't Exist!
-Case #24: Doesn't Exist!
-Case #25: Doesn't Exist!
-Case #26: Doesn't Exist!
-Case #27: Doesn't Exist!
-Case #28: Doesn't Exist!
-Case #29: Doesn't Exist!
-Case #30: Doesn't Exist!
-Case #31: Doesn't Exist!
-Case #32: Doesn't Exist!
-Case #33: Doesn't Exist!
-Case #34: Doesn't Exist!
-Case #35: Doesn't Exist!
-Case #36: Doesn't Exist!
-Case #37: Doesn't Exist!
-Case #38: Doesn't Exist!
-Case #39: Doesn't Exist!
-Case #40: Doesn't Exist!
-Case #41: Doesn't Exist!
-Case #42: Doesn't Exist!
-Case #43: Doesn't Exist!
-Case #44: Doesn't Exist!
-Case #45: Doesn't Exist!
-Case #46: Doesn't Exist!
-Case #47: Doesn't Exist!
-Case #48: Doesn't Exist!
-Case #49: Doesn't Exist!
-Case #50: Doesn't Exist!
-Case #51: Doesn't Exist!
-Case #52: Doesn't Exist!
-Case #53: Doesn't Exist!
-Case #54: Doesn't Exist!
-Case #55: Doesn't Exist!
-Case #56: Doesn't Exist!
-Case #57: Doesn't Exist!
-Case #58: Doesn't Exist!
-Case #59: Doesn't Exist!
-Case #60: Doesn't Exist!
-Case #61: Doesn't Exist!
-Case #62: Doesn't Exist!
-Case #63: Doesn't Exist!
-Case #64: Doesn't Exist!
-Case #65: Doesn't Exist!
-Case #66: Doesn't Exist!
-Case #67: Doesn't Exist!
-Case #68: Doesn't Exist!
-Case #69: Doesn't Exist!
-Case #70: Doesn't Exist!
-Case #71: Doesn't Exist!
-Case #72: Doesn't Exist!
-Case #73: Doesn't Exist!
-Case #74: Doesn't Exist!
-Case #75: Doesn't Exist!
-Case #76: Doesn't Exist!
-Case #77: Doesn't Exist!
-Case #78: Doesn't Exist!
-Case #79: Doesn't Exist!
-Case #80: Doesn't Exist!
-Case #81: Doesn't Exist!
-Case #82: Doesn't Exist!
-Case #83: Doesn't Exist!
-Case #84: Doesn't Exist!
-Case #85: Doesn't Exist!
-Case #86: Doesn't Exist!
-Case #87: Doesn't Exist!
-Case #88: Doesn't Exist!
-Case #89: Doesn't Exist!
-Case #90: Doesn't Exist!
-Case #91: Doesn't Exist!
-Case #92: Doesn't Exist!
-Case #93: Doesn't Exist!
-Case #94: Doesn't Exist!
-Case #95: Doesn't Exist!
-Case #96: Doesn't Exist!
-Case #97: Doesn't Exist!
+5
+1011011 1011111 1010000 1011111 1011011 
+Case #1: 0010011
+1
+1111111 
+Case #2: 1111111
+5
+0000000 0000000 0000000 0000100 0000000 
+Case #3: 0000100
+4
+0001000 0010000 0011010 0011010 
+Case #4: 0011010
+1
+1011110 
+Case #5: ERROR!
+5
+1011110 1011011 1011111 1010000 1011111 
+Case #6: 1011011
+2
+0010011 1011001 
+Case #7: 1001101
+4
+0100001 1101001 1101101 0100000 
+Case #8: 1101100
+5
+0110000 1111000 1111001 1111001 1110000 
+Case #9: 1011001
+5
+0100000 1101110 1101010 1101110 1100000 
+Case #10: 1001110
+2
+1111011 1110000 
+Case #11: ERROR!
+2
+1101000 0110000 
+Case #12: 1111010
+5
+0010011 0110011 0110001 0100101 0110000 
+Case #13: 0110110
+2
+0110000 1111100 
+Case #14: 1111001
+2
+1010111 1010000 
+Case #15: ERROR!
+2
+0100001 1101001 
+Case #16: 1101101
+4
+1101001 1101001 0100000 1101010 
+Case #17: 1101011
+1
+0001011 
+Case #18: ERROR!
+3
+0111011 0111111 0110000 
+Case #19: 0011111
+1
+0110000 
+Case #20: ERROR!
+4
+1011010 1011010 0110010 1111000 
+Case #21: 1101000
+3
+1111001 1101001 0110000 
+Case #22: 1111010
+2
+1111010 1111110 
+Case #23: 1110000
+1
+0110000 
+Case #24: ERROR!
+3
+1111001 1111101 1110000 
+Case #25: 1011101
+5
+1011001 1001101 0010000 1011100 1011001 
+Case #26: 1011101
+1
+0011111 
+Case #27: ERROR!
+3
+1010110 1010011 1010111 
+Case #28: 1010000
+5
+1011101 1011001 0010001 1011001 1001101 
+Case #29: 0010000
+5
+1010011 0110011 1110001 1100101 0110000 
+Case #30: 1110110
+2
+1101001 0110000 
+Case #31: 1111010
+4
+1111010 1111110 1110000 1011110 
+Case #32: 1011010
+1
+0110000 
+Case #33: ERROR!
+4
+0010111 0010011 0110011 0110001 
+Case #34: 0100101
+2
+0110010 1111000 
+Case #35: 1101100
+1
+1010000 
+Case #36: ERROR!
+5
+0110000 1111110 1111010 1111110 1110000 
+Case #37: 1011110
+4
+0110001 1111001 1101101 0110000 
+Case #38: 1111100
+1
+1011100 
+Case #39: ERROR!
+3
+1110000 1011100 1011000 
+Case #40: 0110000
+3
+1110001 1100101 0110000 
+Case #41: 1110110
+3
+1011011 0110011 1111001 
+Case #42: 1101101
+5
+1011010 1011010 0110010 1111000 1101000 
+Case #43: 0110000
+3
+1011011 0110011 1111001 
+Case #44: 1101101
+2
+1100100 0110000 
+Case #45: 1110110
+1
+1011000 
+Case #46: ERROR!
+5
+0011011 0011011 0110011 0111001 0101001 
+Case #47: 0110000
+1
+0100000 
+Case #48: ERROR!
+4
+1011010 1011010 0110010 1111000 
+Case #49: 1101000
+2
+0101101 0110000 
+Case #50: 0111110
+2
+1111111 1110000 
+Case #51: 1011111
+5
+1101001 0100000 1101010 1101011 1101011 
+Case #52: 1100000
+2
+0010111 0010011 
+Case #53: 0110011
+1
+0100000 
+Case #54: ERROR!
+1
+0111001 
+Case #55: ERROR!
+3
+0001111 0001011 0100011 
+Case #56: 0101001
+4
+1101101 0110000 1111100 1111001 
+Case #57: 1111101
+1
+0111000 
+Case #58: ERROR!
+3
+0110000 0111110 0111011 
+Case #59: 0111111
+2
+0101100 0110000 
+Case #60: 0111110
+4
+1011100 1011000 0110000 1111000 
+Case #61: 1101100
+4
+0110011 0111001 0101101 0110000 
+Case #62: 0111110
+4
+0011111 0010000 0011111 0011011 
+Case #63: 0010011
+5
+1110000 1011011 1011011 0110011 1111001 
+Case #64: 1101001
+4
+1101100 0100000 1101110 1101010 
+Case #65: 1101110
+1
+1001111 
+Case #66: ERROR!
+1
+0110011 
+Case #67: ERROR!
+4
+0011001 0001101 0010000 0011110 
+Case #68: 0011011
+2
+0100000 1101110 
+Case #69: 1101011
+2
+0011101 0011001 
+Case #70: 0110001
+5
+1001110 1001010 0100010 1101000 1101100 
+Case #71: 0100000
+1
+0100010 
+Case #72: ERROR!
+1
+1111110 
+Case #73: ERROR!
+1
+1011101 
+Case #74: ERROR!
+2
+1010111 1010011 
+Case #75: 0110011
+5
+0110000 1110100 1110001 1110101 1110000 
+Case #76: 1010101
+2
+1001001 1001101 
+Case #77: ERROR!
+5
+0110011 0111001 0101001 0110000 0111010 
+Case #78: 0111011
+2
+1110000 1011100 
+Case #79: 1011000
+5
+0110001 1111001 1101001 0110000 1111000 
+Case #80: 1111001
+1
+0111011 
+Case #81: ERROR!
+2
+1111001 1110000 
+Case #82: ERROR!
+1
+0111010 
+Case #83: ERROR!
+4
+1010000 1011101 1011001 0010001 
+Case #84: 1011001
+3
+0000011 1001001 1001101 
+Case #85: 0000000
+2
+1111001 1110000 
+Case #86: ERROR!
+5
+1011011 1011111 1010000 1011111 1011011 
+Case #87: 0010011
+2
+1101011 1100000 
+Case #88: ERROR!
+2
+0101011 0101111 
+Case #89: 0100000
+3
+0010000 0011111 0011011 
+Case #90: 0010011
+5
+0101001 0110000 0111010 0111011 0111011 
+Case #91: 0110000
+4
+0110000 1111110 1111011 1111111 
+Case #92: 1110000
+3
+1111010 1110000 1011010 
+Case #93: 1011010
+1
+1011011 
+Case #94: ERROR!
+2
+1110000 1011001 
+Case #95: 1011001
+2
+0011111 0011011 
+Case #96: 0110011
+1
+1111001 
+Case #97: ERROR!
+1
+0100000 
+Case #98: ERROR!
+1
+0110000 
+Case #99: ERROR!
+5
+1010110 1010010 0110010 1110000 1100100 
+Case #100: 0110000
