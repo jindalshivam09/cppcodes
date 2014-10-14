@@ -106,4 +106,3 @@ int main() {
 	cout << ford_fulkerson(graph,v,s,t) << endl;
 	
 }
-

@@ -23,14 +23,24 @@ typedef vector<pair<double,double> > vpdd;
 #define dmin            numeric_limits<double>::min()
 
 int main() {
-	int t ;
-	cin >> t ;
+	int t;
+	cin >> t;
 	while(t--) {
-		int n,m;
-		cin >> n >>  m ;
-		double ans = n*(pow(m*1.0,1.0/n)) ;
-		cout << fixed << setprecision(6) << ans << endl;
+		int a , k ;
+		cin >> a >> k ;
+		double n = a*1.00 ;
+		double ans = 0.0 ;
+		while ( k ) {
+			cout.setf(ios_base::fixed) ;
+			cout.precision(8);
+			double temp = pow(n*1.0,1.0/k) ;
+			cout.setf(ios_base::fixed) ;
+			cout.precision(8);
+			n = n/temp ;
+			ans += temp ;
+			k--;
+//			cout << temp << " " << n << " " << ans  << endl;	
+		}
+		cout << setprecision(6) <<  ans << endl;
 	}
 }
-
-
