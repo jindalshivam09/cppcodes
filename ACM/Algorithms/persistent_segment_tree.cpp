@@ -9,10 +9,11 @@ using namespace std;
 #define GETCHAR getchar
 #define PUTCHAR putchar
 #endif
-inline long long read_int()
+
+inline int read_int()
 {
 int flag=1;
-long long n = 0;
+int n = 0;
 char c;
 int sign=1;
 while (1)
@@ -115,7 +116,7 @@ int getLCA(int u, int v) {
 	return father[u] ;
 }
 
-int query(segment *a, segment *b, segment *c, segment *d,int l, int r, int k) {
+inline int query(segment *a, segment *b, segment *c, segment *d,int l, int r, int k) {
 	if(l == r) {
 		return l ;
 	}
@@ -127,7 +128,7 @@ int query(segment *a, segment *b, segment *c, segment *d,int l, int r, int k) {
 		
 }
 
-int retrieve(int u, int v, int k) {
+inline int retrieve(int u, int v, int k) {
 	int LCA = getLCA(u,v) ;
 	if(father[LCA] != -1) 	return query(root[u],root[v],root[LCA],root[father[LCA]],0,node,k) ;
 	else					return query(root[u],root[v],root[LCA],null,0,node,k) ;

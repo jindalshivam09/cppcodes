@@ -1,3 +1,5 @@
+// to be done later ......
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -91,56 +93,19 @@ void calculate_ranks() {
 		ranks[i] = ranks[i-1] + str.size()-positions[i].second - LCP;
 		same[i] = LCP ;
 		cout << ranks[i] << " " << same[i] << " " << positions[i].second << " " << mapped[positions[i].second] << " " << endl;
-	} 
+	}
 	cout << endl;
 }
 
-vector<pair<int,int> > segment(MAX) ;
-
-void makeSegment(int num, int l, int r) {
-	if(l == r) {
-		segment[num].first = same[l] ;
-		segment[num].second = l ;
-		return ;
-	}
-	int mid = (l+r)/2 ;
-	makeSegment(2*num,l,mid), makeSegment(2*num+1,mid+1,r) ;
-	segment[num] = min(segment[2*num],segment[2*num+1]) ;
-}
-
-pair<int,int> findMin(int num,int l,int r, int a, int b) {
-	if(l > b || r < a)
-		return make_pair(INT_MAX,-1);
-	if(l>=a && r<=b)
-		return segment[num];
-	int mid = (l+r)/2;
-	return min(findMin(2*num,l,mid,a,b), findMin(2*num+1,mid+1,r,a,b)) ;
-}
+vector<vector<int> > 
 
 void preprocess()  {
 	suffix_array() ;
 	calculate_ranks();
 	makeSegment(1,0,str.size()-1) ;
+	RMQ() ;
 }
 
-int nextMin(int l, int len) {
-	
-	int pre = l ;
-	int a = l+1, b = str.size()-1 ;
-	while(a<=b) {
-		cout << a << " " << b << endl;
-		int mid = (a+b)/2 ;
-		pair<int,int> ans = findMin(1,0,str.size()-1,a,mid) ;
-		int idx = ans.second, val = ans.first ;
-		if(val > len) {
-			a = mid+1 ;
-		}
-		else {
-			b = mid-1 ;
-		}	
-	}
-	return a ;
-}
 
 pair<int,int> selectk1k2(int k1, int k2) {
 	pair<int,int> ans ;
